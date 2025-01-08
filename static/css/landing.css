@@ -1,0 +1,667 @@
+
+/* Основные параметры для "капель" */
+.blob {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 0, 150, 1) 0%, rgba(0, 204, 255, 1) 100%);
+    filter: blur(200px); /* Увеличено размытие */
+    border-radius: 50%;
+    animation: moveBlobs 20s infinite;
+    opacity: 0.6;
+}
+
+/* Карточки */
+
+.item-section {
+    perspective: 2000px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: left; /* Изменено: центрирование карточек */
+    align-items: center; 
+    height: 100vh; 
+}
+
+.item-card {
+    opacity: 0; 
+    transition: opacity 3s ease, transform 6s ease; 
+    margin: 20px; 
+    width: 800px; 
+    height: 400px; 
+    border: none; 
+    border-radius: 50px; 
+    position: relative; 
+    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
+}
+
+
+.card-background {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: url('/static/img/fonk.webp') no-repeat center center; 
+    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
+    z-index: 1; 
+}
+
+.item-card-content {
+    position: absolute; /* Изменено: абсолютное позиционирование */
+    top: 45%; /* Центрируем по вертикали */
+    left: 20px; /* Фиксированное значение слева */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto; /* Позволяем контенту определять высоту */
+    padding: 20px; /* Убираем отступы */
+}
+
+.item-image {
+    position: absolute; 
+    top: 50%; /* Центрируем по вертикали */
+    right: -320px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
+    width: 270px; /* Увеличьте ширину изображения, если необходимо */
+    height: auto; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+.item-card.left {
+    transform: translateX(-100%) rotateY(20deg); 
+}
+
+.item-card.right {
+    transform: translateX(100%) rotateY(-20deg); 
+}
+
+.item-card.visible {
+    opacity: 1; 
+    transform: translateX(0) rotateY(0); 
+}
+
+.item-title-box {
+    font-size: 60px; 
+    font-weight: 600; 
+    color: #00573d; 
+    margin-top: 20px; 
+    margin-bottom: 15px; 
+    margin-left: 90px; /* Увеличиваем отступ сверху */
+    text-align: center; 
+    letter-spacing: 3px;
+}
+
+.item-text {
+    font-size: 17px; 
+    font-weight: 700; 
+    color: #10371f; 
+    text-align: left; 
+    margin: 0; 
+    padding: 0; /* Убираем отступы, если они есть */
+    letter-spacing: 2px;
+}
+
+/* Группа 2 */
+.item-section2 {
+    perspective: 2000px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: left; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.item-card2 {
+    opacity: 0; 
+    transition: opacity 3s ease, transform 6s ease; 
+    margin: 20px; 
+    width: 800px; 
+    height: 400px; 
+    border: none; 
+    border-radius: 50px; 
+    position: relative; 
+    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
+}
+
+.card-background2 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: url('/static/img/fonk.webp') no-repeat center center; 
+    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
+    z-index: 1; 
+}
+
+.item-card-content2 {
+    position: absolute; /* Изменено: абсолютное позиционирование */
+    top: 45%; /* Центрируем по вертикали */
+    left: 20px; /* Фиксированное значение слева */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto; /* Позволяем контенту определять высоту */
+    padding: 20px; /* Убираем отступы */
+}
+
+.item-image2 {
+    position: absolute; 
+    top: 52%; /* Центрируем по вертикали */
+    right: -320px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
+    width: 360px; /* Увеличьте ширину изображения, если необходимо */
+    height: auto; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+.item-title-box2 {
+    font-size: 25px; 
+    font-weight: 600; 
+    color: #00573d; 
+    margin-top: 20px; 
+    margin-bottom: 15px; 
+    margin-left: 20px; /* Увеличиваем отступ сверху */
+    text-align: center; 
+    letter-spacing: 3px;
+}
+
+.item-text2 {
+    font-size: 17px; 
+    font-weight: 700; 
+    color: #10371f; 
+    text-align: left; 
+    margin: 0; 
+    padding: 0; /* Убираем отступы, если они есть */
+    letter-spacing: 2px;
+}
+
+/* Группа 3 */
+.item-section3 {
+    perspective: 2000px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: left; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.item-card3 {
+    opacity: 0; 
+    transition: opacity 3s ease, transform 6s ease; 
+    margin: 20px; 
+    width: 800px; 
+    height: 400px; 
+    border: none; 
+    border-radius: 50px; 
+    position: relative; 
+    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
+}
+
+.card-background3 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: url('/static/img/fonk2.webp') no-repeat center center; 
+    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
+    z-index: 1; 
+}
+
+.item-card-content3 {
+    position: absolute; /* Изменено: абсолютное позиционирование */
+    top: 45%; /* Центрируем по вертикали */
+    right: 20px; /* Перемещаем текст вправо */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* Выравниваем текст по правому краю */
+    height: auto; /* Позволяем контенту определять высоту */
+    padding: 20px; /* Убираем отступы */
+}
+
+.item-image3 {
+    position: absolute; 
+    top: 50%; /* Центрируем по вертикали */
+    left: -248px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
+    width: 350px; /* Увеличьте ширину изображения, если необходимо */
+    height: auto; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+.item-title-box3 {
+    font-size: 25px; 
+    font-weight: 600; 
+    color: #00573d; 
+    margin-top: 15px; 
+    margin-bottom: 10px; 
+    text-align: right; /* Изменено: выравнивание текста по правому краю */
+    letter-spacing: 3px;
+}
+
+.item-text3 {
+    font-size: 17px; 
+    font-weight: 700; 
+    color: #10371f; 
+    text-align: right; 
+    margin: 0; 
+    padding: 0; /* Убираем отступы, если они есть */
+    letter-spacing: 2px;
+}
+
+/* Группа 4 */
+.item-section3 {
+    perspective: 2000px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: left; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.item-card3 {
+    opacity: 0; 
+    transition: opacity 3s ease, transform 6s ease; 
+    margin: 20px; 
+    width: 800px; 
+    height: 400px; 
+    border: none; 
+    border-radius: 50px; 
+    position: relative; 
+    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
+}
+
+.card-background3 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: url('/static/img/fonk2.webp') no-repeat center center; 
+    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
+    z-index: 1; 
+}
+
+.item-card-content3 {
+    position: absolute; /* Изменено: абсолютное позиционирование */
+    top: 45%; /* Центрируем по вертикали */
+    right: 20px; /* Перемещаем текст вправо */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* Выравниваем текст по правому краю */
+    height: auto; /* Позволяем контенту определять высоту */
+    padding: 20px; /* Убираем отступы */
+}
+
+.item-image3 {
+    position: absolute; 
+    top: 50%; /* Центрируем по вертикали */
+    left: -248px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
+    width: 350px; /* Увеличьте ширину изображения, если необходимо */
+    height: auto; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+.item-title-box3 {
+    font-size: 25px; 
+    font-weight: 600; 
+    color: #00573d; 
+    margin-top: 15px; 
+    margin-bottom: 10px; 
+    text-align: right; /* Изменено: выравнивание текста по правому краю */
+    letter-spacing: 3px;
+}
+
+.item-text3 {
+    font-size: 17px; 
+    font-weight: 700; 
+    color: #10371f; 
+    text-align: right; 
+    margin: 0; 
+    padding: 0; /* Убираем отступы, если они есть */
+    letter-spacing: 2px;
+}
+
+
+/* Группа 5 */
+.item-section4 {
+    perspective: 2000px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: left; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.item-card4 {
+    opacity: 0; 
+    transition: opacity 3s ease, transform 6s ease; 
+    margin: 20px; 
+    width: 800px; 
+    height: 400px; 
+    border: none; 
+    border-radius: 50px; 
+    position: relative; 
+    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
+}
+
+.card-background4 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: url('/static/img/fonk2.webp') no-repeat center center; 
+    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
+    z-index: 1; 
+}
+
+.item-card-content4 {
+    position: absolute; /* Изменено: абсолютное позиционирование */
+    top: 45%; /* Центрируем по вертикали */
+    right: 20px; /* Перемещаем текст вправо */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* Выравниваем текст по правому краю */
+    height: auto; /* Позволяем контенту определять высоту */
+    padding: 20px; /* Убираем отступы */
+}
+
+.item-image4 {
+    position: absolute; 
+    top: 70%; /* Центрируем по вертикали */
+    left: -250px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
+    width: 350px; /* Увеличьте ширину изображения, если необходимо */
+    height: auto; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+.item-title-box4 {
+    font-size: 25px; 
+    font-weight: 600; 
+    color: #00573d; 
+    margin-top: 15px; 
+    margin-bottom: 10px; 
+    text-align: center; /* Изменено: выравнивание текста по правому краю */
+    letter-spacing: 3px;
+}
+
+.item-text4 {
+    font-size: 17px; 
+    font-weight: 700; 
+    color: #10371f; 
+    text-align: right; 
+    margin: 0; 
+    padding: 0; /* Убираем отступы, если они есть */
+    letter-spacing: 2px;
+}
+
+/* Группа 6 */
+.item-section5 {
+    perspective: 2000px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: left; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.item-card5 {
+    opacity: 0; 
+    transition: opacity 3s ease, transform 6s ease; 
+    margin: 20px; 
+    width: 800px; 
+    height: 400px; 
+    border: none; 
+    border-radius: 50px; 
+    position: relative; 
+    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
+}
+
+.card-background5 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: url('/static/img/fonk.webp') no-repeat center center; 
+    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
+    z-index: 1; 
+}
+
+.item-card-content5 {
+    position: absolute; /* Изменено: абсолютное позиционирование */
+    top: 45%; /* Центрируем по вертикали */
+    left: 20px; /* Фиксированное значение слева */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto; /* Позволяем контенту определять высоту */
+    padding: 20px; /* Убираем отступы */
+}
+
+.item-image5 {
+    position: absolute; 
+    top: 52%; /* Центрируем по вертикали */
+    right: -320px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
+    width: 360px; /* Увеличьте ширину изображения, если необходимо */
+    height: auto; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+.item-title-box5 {
+    font-size: 24px; 
+    font-weight: 600; 
+    color: #00573d; 
+    margin-top: 30px; 
+    margin-bottom: 15px; 
+    margin-left: 20px; /* Увеличиваем отступ сверху */
+    text-align: left; 
+    letter-spacing: 3px;
+}
+
+.item-text5 {
+    font-size: 16.5px; 
+    font-weight: 700; 
+    color: #10371f; 
+    text-align: left; 
+    margin: 0; 
+    padding: 0; /* Убираем отступы, если они есть */
+    letter-spacing: 2px;
+}
+
+
+/* Параметры каждой отдельной "капли" */
+.blob:nth-child(1) {
+    width: 800px; height: 800px; top: 5%; left: 5%; animation-duration: 25s;
+}
+
+.blob:nth-child(2) {
+    width: 900px; height: 900px; top: 40%; left: 20%; animation-duration: 22s;
+}
+
+.blob:nth-child(3) {
+    width: 700px; height: 700px; top: 60%; left: 65%; animation-duration: 27s;
+}
+
+.blob:nth-child(4) {
+    width: 1000px; height: 1000px; top: 30%; left: 80%; animation-duration: 30s;
+}
+
+/* Анимация для "капель" */
+@keyframes moveBlobs {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(100px, -100px) scale(1.3); /* Увеличено смещение */
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* Стили для основного контента */
+.content {
+    position: static;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding-top: 40vh;
+}
+
+/* Модальное окно */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1000; /* На переднем плане */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.801); /* Черный фон с прозрачностью */
+    animation: fadeIn 0s; /* Плавная анимация при появлении */
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 15% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 2px solid #ffffff00; /* Уменьшаем ширину границы */
+    width: 20%; /* Ширина модального окна */
+    text-align: center; /* Центрирование текста */
+    animation: borderGlow 1.5s infinite; /* Применяем анимацию к границе */
+}
+
+/* Кнопка закрытия */
+.close {
+    color: #000000; /* Цвет для кнопки закрытия */
+    float: right; /* Справа */
+    font-size: 28px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    display: none; /* Скрыто по умолчанию */
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(0, 247, 255); /* Цвет при наведении */
+    text-decoration: none; /* Без подчеркивания */
+    cursor: pointer; /* Курсор в виде руки */
+}
+
+/* Кнопки в модальном окне */
+.modal-button {
+    margin: 10px; /* Отступы для кнопок */
+    padding: 10px 20px; /* Внутренние отступы */
+    font-size: 28px; /* Размер шрифта */
+    cursor: pointer; /* Курсор в виде руки */
+    border-radius: 55px; /* Закругление углов кнопок */
+    background: linear-gradient(45deg, #09ff00, #00eeff); /* Цвет фона кнопки (по желанию) */
+    border: none; /* Убираем рамку (по желанию) */
+    color: white; /* Цвет текста кнопки */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.3s, text-shadow 0.3s; /* Плавный переход для цвета текста и теней */
+}
+
+.modal-button:hover {
+    color: #000000; /* Цвет текста при наведении */
+    text-shadow: 0 0 10px #000000, 0 0 20px #09ff00; /* Светящийся эффект для текста */
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes borderGlow {
+    0% {
+        border-color: #09ff00; /* Цвет 1 */
+        box-shadow: 0 0 20px #09ff00; /* Начальный свет */
+    }
+    50% {
+        border-color: #00eeff; /* Цвет 2 */
+        box-shadow: 0 0 20px #00eeff; /* Яркий свет */
+    }
+    100% {
+        border-color: #09ff00; /* Цвет 1 */
+        box-shadow: 0 0 20px #09ff00; /* Начальный свет */
+    }
+}
+
+@keyframes glowing {
+    0% {
+        background-color: #1a1a2eb7; /* Очень темный синий */
+    }
+    25% {
+        background-color: #16213eb7; /* Темный индиго */
+    }
+    50% {
+        background-color: #0f3460b7; /* Темно-синий */
+    }
+    75% {
+        background-color: #533483b7; /* Темный фиолетовый */
+    }
+    100% {
+        background-color: #16213eb7; /* Темный розовый */
+    }
+}
+
+/* Навигационная панель */
+.rounded-navbar {
+    position: fixed; /* Фиксирует элемент в верхней части окна */
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px; 
+    overflow: hidden; 
+    animation: glowing 8s infinite alternate; 
+    z-index: 1000; 
+    box-shadow: 0 4px 10px rgba(26, 26, 46, 0.6), 
+                0 4px 20px rgba(22, 33, 62, 0.6), 
+                0 4px 30px rgba(15, 52, 96, 0.6), 
+                0 4px 40px rgba(83, 52, 131, 0.6); 
+}
+
+/* Стилизация ссылок внутри навигационной панели */
+.rounded-navbar a {
+    color: rgb(255, 255, 255); 
+    text-decoration: none; 
+    padding: 10px; 
+    display: inline-block; 
+}
+
+/* Гайд  */
+.item-card-content {
+    padding: 10px; /* Отступы для содержимого карточки */
+}
+
+.item-title-box {
+    font-size: 24px; /* Размер шрифта заголовка */
+    font-weight: bold; /* Жирный шрифт для заголовка */
+    margin-bottom: 10px; /* Отступ снизу для заголовка */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+

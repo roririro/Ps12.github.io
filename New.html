@@ -1,0 +1,1269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixelmon Ultimate 1.12.2</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="static/css/landing.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="https://mcskill.net/assets/images/servers/88.png" type="image/x-icon">
+
+
+    <style>
+
+
+
+@font-face {
+  font-family: 'McSkill';
+  src: url('./fonts/McSkill.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'McSkill';
+}
+
+/* Стили для фона с анимированными формами */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #1a5777; /* Основной цвет фона */
+    background-image: url('/static/img/decor.webp'), linear-gradient(to bottom, #1a5777, #1a5777); /* Замените на путь к вашему PNG */
+    background-size: contain, cover; /* Первое изображение будет содержаться в блоке, второе будет растягиваться */
+    background-position: center; 
+    background-repeat: repeat-y, no-repeat; /* Первое изображение будет повторяться по вертикали, второе не будет повторяться */
+}
+
+
+
+
+        .bordered-img, .loot-chest-card, .staff-card, .botaniaextended-card {
+            border-radius: 25px;
+        }
+
+        .loot-chest-card, .botaniaextended-card {
+            overflow: hidden
+        }
+
+
+
+        /* Optional: Ensure the navbar-collapse expands over the background image */
+        .navbar-collapse {
+            z-index: 150; /* Higher than background and navbar */
+        }
+
+        .navbar-brand {
+    font-family: 'MinecraftFont', sans-serif;
+    color: rgba(0, 255, 64, 0);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: rgb(0, 162, 255) !important;
+    font-size: 1rem;
+    margin-right: 10px;
+    text-decoration: none; /* Убирает подчеркивание */
+    border: none; /* Убирает рамку, если она есть */
+}
+
+.nav-link:hover {
+    color: #00ffc8 !important; /* Цвет текста при наведении */
+    background: none; /* Убирает фон */
+}
+
+        /* Фоновое изображение с градиентом */
+        .background-img {
+            margin-top: 0;
+            z-index: -1;
+            width: 100vw;
+            height: 101vh;
+            object-fit: cover;
+            background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 70%, rgba(0, 89, 255, 0) 100%), url("static/img/background.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(0px) brightness(100%); /* Размытие и затемнение */
+        }
+
+        /* Контент на переднем плане */
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: rgb(255, 255, 255);
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards; /* Плавное появление */
+        }
+
+        .btn-play {
+            font-size: 1.5rem;
+            padding: 0.75rem 1.5rem;
+        }
+
+        /* Заголовок со свечением */
+        .overlay-content h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
+        }
+
+        .glow {
+            animation: glow 5s infinite alternate;
+        }
+
+
+
+        .glow-logo {
+            animation: glow 5s infinite alternate;
+        }
+   
+        /* Магическая кнопка */
+        .magic-btn {
+            position: relative;
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: linear-gradient(45deg, #4AE682, #008B85);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            z-index: 10;
+            text-transform: uppercase;
+            text-decoration: none; /* Убирает подчеркивание */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 40px rgba(255, 251, 0, 0), 0 0 80px rgba(0, 255, 255, 0);
+            overflow: hidden;
+        }
+
+        .magic-btn:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .magic-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 251, 0, 0.2) 20%, rgba(0, 255, 255, 0.6) 60%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.75s ease;
+        }
+
+        .magic-btn:hover::before {
+            opacity: 1;
+            width: 400%;
+            height: 400%;
+        }
+
+
+        /* Магическая кнопка */
+        .magic-btn-nav {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: linear-gradient(45deg, #4AE682, #008B85);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            z-index: 10;
+            text-decoration: none; /* Убирает подчеркивание */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 40px rgba(255, 251, 0, 0), 0 0 80px rgba(0, 255, 255, 0);
+            overflow: hidden;
+
+        }
+
+        .magic-btn-nav:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .magic-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 251, 0, 0) 20%, rgba(0, 255, 255, 0) 60%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.75s ease;
+        }
+
+        .magic-btn-nav:hover::before {
+            opacity: 1;
+            width: 400%;
+            height: 400%;
+        }
+
+
+
+        /* Новая секция */
+        .content-section {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            margin-top: 10vh;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .content-section img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .card-body {
+            background-color: #000;
+            color: white;
+        }
+
+        .last-section {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        /* Новая секция */
+        .last-section {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .last-section img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .card-body {
+            max-width: 100vh;
+
+        }
+
+        .card-text-section {
+            text-align: left;
+        }
+
+        .card-title {
+            margin-bottom: 30px;
+        }
+
+        .card-subtitle {
+            margin-top: 40px;
+            margin-bottom: 5px;
+        }
+
+        .content-card {
+            background-color: #121212;
+        }
+
+        .card-img-top {
+            transition: transform 0.3s ease;
+        }
+
+        .interactimg {
+            transition: transform 0.3s ease;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.05); /* Эффект при наведении */
+        }
+
+        .interactimg:hover:hover {
+            transform: scale(1.05); /* Эффект при наведении */
+        }
+
+
+        /* ====== Scroll Animation Styles ====== */
+        .animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* ====== Existing Styles (Unchanged) ====== */
+        /* ... Your existing CSS ... */
+
+        /* ====== Directional Animation Styles ====== */
+
+        /* Initial state for animate-on-scroll elements */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Animation when scrolling down */
+        .animate-up {
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        /* Animation when scrolling up */
+        .animate-down {
+            animation: fadeInDown 0.6s forwards;
+        }
+
+        /* Keyframes for fading in upwards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for fading in downwards */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .under-word-image-text-block {
+            padding: 10px 10px 10px 10px;
+        }
+
+        .world-card {
+            margin: 0px 0 60px 0;
+        }
+
+
+        /* Стили для разделителей */
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+            color: rgb(255, 255, 255);
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: white;
+            margin: 0 20px;
+        }
+
+        .separator span {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+
+        /* Стили для временной шкалы */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+            z-index: 1;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #C89FEB, #FF69B4, #5D69BF, #8A2BE2); /* Многокрасочный градиент */ /* Градиентная линия */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 20px 30px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background: linear-gradient(135deg, #00ff2a, #00d9ff); /* Градиент от розового к фиолетовому */
+            border: 4px solid #fff;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-item .timeline-content {
+            padding: 20px 30px;
+            background-color: #121212e8;
+            position: relative;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+        }
+
+        .timeline-item .timeline-content img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item .timeline-content img:hover {
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 15px;
+            }
+        }
+
+
+        .screenshot-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+
+    </style>
+
+
+<style>
+
+
+    /* Контейнер фона с наложением */
+    .background {
+        position: relative;
+        width: 100%; /* Автоматически подстраивает ширину под размер экрана */
+        margin: 0 auto; /* Центрирование */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Прячем все, что выходит за пределы */
+    }
+
+    /* Контейнер для двух картинок */
+    .moving-images {
+        display: flex;
+        flex-wrap: nowrap;
+        animation: moveRight 10s linear infinite; /* Анимация для движения */
+    }
+
+    /* Анимация для плывущего изображения */
+    @keyframes moveRight {
+        0% {
+            transform: translateX(0); /* Начало с начала */
+        }
+        /*50% {*/
+        /*    transform: translateX(-50%); !* Перемещение до половины *!*/
+        /*}*/
+        100% {
+            transform: translateX(-100%); /* Перемещение на весь экран */
+        }
+    }
+
+    .moving-image {
+        width: 100%; /* Ширина изображения 100%, чтобы оно заполнило контейнер */
+        height: auto;
+    }
+
+
+    /*!* Медиазапросы для адаптации на мобильных устройствах *!*/
+    /*@media (max-width: 767.98px) {*/
+    /*    !* Уменьшение размеров для мобильных устройств *!*/
+    /*    .background {*/
+    /*        width: 100%;*/
+    /*    }*/
+
+    /*    .overlay img {*/
+    /*        max-width: 100%; !* Убираем ограничение размера изображения на мобильных устройствах *!*/
+    /*    }*/
+
+    /*    !* Размеры текста для мобильных устройств *!*/
+    /*    .card-text {*/
+    /*        font-size: 0.9rem;*/
+    /*    }*/
+
+    /*    .card-title {*/
+    /*        font-size: 1.2rem;*/
+    /*    }*/
+    /*}*/
+</style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-xxl navbar-dark rounded-navbar">
+        <div class="container-fluid">
+            <img src="static/img/mcskill_logo.webp" class="glow-logo" alt=""
+                 decoding="async" loading="lazy"
+                 style="margin-left: 5%; max-height: 60px; cursor: pointer;"
+                 onclick="window.location.href='https://mcskill.net/'">
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" style="margin-right: 5%;">
+                    <li class="nav-item">
+                        <a class="nav-link glow" style="font-size: 20px;" href="#" id="shopButton">Магазин</a>
+                    </li>
+                    <li class="nav-item glow">
+                        <a class="nav-link" style="font-size: 20px;" href="https://mcskill.net/mcforum/">Форум</a>
+                    </li>
+                    <li class="nav-item glow">
+                        <a class="nav-link" style="font-size: 20px;" href="https://u.mcskill.net/dissupport">Поддержка</a>
+                    </li>
+                    <li class="nav-item glow">
+                        <a class="nav-link" style="font-size: 20px;" href="https://discord.gg/mcskill">Discord</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="https://mcskill.net/start" class="magic-btn-nav">Скачать лаунчер</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+<!-- Модальное окно -->
+<div id="shopModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Выберите сервер</h2>
+        <a href="https://mcskill.net/store?server=88&tab=4" class="modal-button">Pixelmon №1</a>
+        <a href="https://mcskill.net/store?server=188&tab=4" class="modal-button">Pixelmon №2</a>
+        <a href="https://mcskill.net/store?server=288&tab=4" class="modal-button">Pixelmon №3</a>
+    </div>
+</div>
+
+
+<style>
+    #shopModal h2 {
+        font-family: 'Gabriola', sans-serif; /* Замените на желаемый шрифт */
+        font-size: 40px; /* Замените на желаемый размер шрифта */
+        color: #ffffff; /* Замените на желаемый цвет текста */
+        text-align: center; /* Выравнивание текста по центру */
+    }
+</style>
+
+
+<style>
+    /* Устанавливаем соотношение сторон для всех каруселей */
+    .quest-carousel-img {
+        aspect-ratio: 1741 / 1175; /* Можешь изменить на нужное соотношение */
+        width: 100%;
+    }
+
+</style>
+
+
+
+
+<!-- Фоновое изображение с градиентом -->
+<div class="background-img"></div>
+
+
+
+
+<!--  Описание сервера  -->
+    <div class="container container-fluid">
+        
+
+<!-- Ежедневные Бонусы -->
+
+
+
+    <!-- контент Бонусы -->
+
+
+<!-- ФОТО ВДОЛЬ ЭКРАНА -->  
+
+
+
+
+<!-- Группа 1 -->
+<div class="item-section">
+    <div class="item-card visible left">
+        <div class="card-background"></div>
+        <div class="item-card-content">
+            <img class="item-image" src="/static/img/r1.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box">9 Поколение</div>
+            <div class="item-text">
+                <br>
+                добавлено около 119 новых<br>
+                покемонов, из которых 17 это<br>
+                легендарные, все они являются <br>
+                представителями 9 поколения!<br><br>
+                подробную информацию вы<br>
+                сможете узнать в нашем гайде:<br>
+                <a href="https://mcskill.net/mcforum/index.php?/topic/175017-гайд-9-поколение-pixelmon-ultimate-1122/" target="_blank">Гайд по 9-му поколению</a>.<br>
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 1 -->
+</div>
+
+<!-- Группа 2 -->
+<div class="item-section2">
+    <div class="item-card visible left">
+        <div class="card-background2"></div>
+        <div class="item-card-content2">
+            <img class="item-image2" src="/static/img/r2.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box2">Уровень покетренера</div>
+            <div class="item-text2">
+                уникальная механика сервера,<br>
+                добавляющая шкалу уровня и<br>
+                награды к ее заполнению!<br>
+                Уровень заполняется путем<br>
+                Выполнения квестов, копания<br>
+                молотами из HammerTime, ловли<br>
+                покемонов или же победы над<br>
+                ними и тд. Ознакомиться со<br>
+                всеми особенностями Уровня ПТ<br>
+                можно в гайде<br>
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 2 -->
+</div>
+
+<!-- Группа 3 -->
+<div class="item-section3">
+    <div class="item-card visible right">
+        <div class="card-background3"></div>
+        <div class="item-card-content3">
+            <img class="item-image3" src="/static/img/r3.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box3">Башня “Бесконечности”</div>
+            <div class="item-text3">
+                <br>
+                Новый житель города (спавна) <br>
+                поведает вам о невероятной башне за<br> 
+                рамками пространства и времени.<br>
+                Ходят легенды, что в ней можно<br>
+                 застрять в вечной битве с покемонами,<br> 
+                за право лучшего исследователя, <br>
+                испытайте свою удачю!<br>
+                /warp pt
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 2 -->
+</div>
+
+<!-- Группа 4 -->
+<div class="item-section4">
+    <div class="item-card visible right">
+        <div class="card-background4"></div>
+        <div class="item-card-content4">
+            <img class="item-image4" src="/static/img/r4.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box4">Сражение против <br> “Искаженных” покемонов<br></div>
+            <div class="item-text4">
+                <br>
+                Постепенно из за странных аномалий<br>
+                в городе (спавне) образовалось<br>
+                несколько новых биомов кишащих<br>
+                агрессивными покемонами.<br>
+                Ваша задача совместно с учеными<br>
+                города узнать причину проблемы<br>
+                и искоренить ее!<br>
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 2 -->
+</div>
+
+
+<!-- Группа 4 -->
+<div class="item-section5">
+    <div class="item-card visible left">
+        <div class="card-background5"></div>
+        <div class="item-card-content5">
+            <img class="item-image5" src="/static/img/r5.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box5">Новые покеболл и<br> магический камень<br></div>
+            <div class="item-text5">
+                На наш сервер были добавлены<br>
+                два совершенно новых предмета:<br>
+                • Скиллболл<br>
+                покеболл имеющий шанс поимки<br>
+                x2,2 + 0,5 за каждый 5й уровень<br>
+                пт (в бою)<br>
+                • Камень пропуска задания<br>
+                магический камень<br>
+                позволяющий пропускать часть<br>
+                квестов<br>
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 2 -->
+</div>
+
+
+
+
+
+
+<style>
+    /* Устанавливаем соотношение сторон для всех каруселей */
+    .quest-carousel-img {
+        aspect-ratio: 640 / 360; /* Можешь изменить на нужное соотношение */
+        width: 100%;
+    }
+
+</style>
+
+
+<style>
+
+    .content-card {
+        background-color: #121212;
+        color: white;
+    }
+
+    .rounded {
+        border-radius: 15px;
+    }
+
+    .card{
+        --bs-card-border-radius: 0
+    }
+
+    .card-img-top {
+        margin-bottom: 15px;
+    }
+
+    .staff-card-body {
+        padding: 10px 15px;
+        background-color: #121212;
+    }
+
+    .my-popover {
+        --bs-popover-max-width: 200px;
+        --bs-popover-border-color: white;
+        --bs-popover-header-bg: black;
+        --bs-popover-header-color: black;
+        --bs-popover-body-padding-x: 1rem;
+        --bs-popover-body-padding-y: .5rem;
+    }
+
+    .my-popover1 {
+        --bs-popover-max-width: 200px;
+        --bs-popover-border-color: white;
+        --bs-popover-header-bg: black;
+        --bs-popover-header-color: black;
+        --bs-popover-body-padding-x: 1rem;
+        --bs-popover-body-padding-y: .5rem;
+    }
+
+    .popover {
+        --bs-popover-bg: black;
+        --bs-popover-font-size: 0.8rem;
+    }
+
+    .popover-body {
+        color: white;
+        font-family: "Noto Sans",sans-serif;
+    }
+
+</style>
+
+<!-- JavaScript для активации Popover на hover для всех карточек -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Находим все карточки с классом .staff-card
+        const staffCards = document.querySelectorAll('.staff-card');
+
+        // Для каждой карточки инициализируем Popover и добавляем события
+        staffCards.forEach((card) => {
+            const popover = new bootstrap.Popover(card, {
+                trigger: 'manual' // управляем ручным открытием/закрытием
+            });
+
+            // Показ popover при наведении
+            card.addEventListener('mouseenter', function () {
+                popover.show();
+            });
+
+            // Скрытие popover при уходе курсора
+            card.addEventListener('mouseleave', function () {
+                popover.hide();
+            });
+        });
+    });
+</script>
+
+<style>
+    .heart {
+        position: relative;
+        width: 150px; /* Увеличен размер сердца */
+        height: 150px;
+        background-color: red;
+        margin-top: 100px;
+        display: inline-block;
+        transform: rotate(-45deg);
+        animation: pulse 1.5s infinite;
+        filter: blur(2px); /* Размытые границы */
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.4); /* Свечение */
+    }
+
+    .heart::before, .heart::after {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -75px; /* Сдвиг вверх с увеличенным размером */
+        left: 0;
+    }
+
+    .heart::after {
+        left: 75px; /* Сдвиг вправо с увеличенным размером */
+        top: 0;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1) rotate(-45deg);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.4); /* Свечение в начальном состоянии */
+        }
+        50% {
+            transform: scale(1.2) rotate(-45deg); /* Увеличенное сердце */
+            box-shadow: 0 0 40px rgba(255, 0, 0, 1), 0 0 60px rgba(255, 0, 0, 0.8), 0 0 80px rgba(255, 0, 0, 0.6); /* Усиленное свечение при пульсации */
+        }
+        100% {
+            transform: scale(1) rotate(-45deg);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.4); /* Возвращение к исходному состоянию */
+        }
+    }
+
+</style>
+
+<style>
+
+
+    /* Контейнер фона с наложением */
+    .background {
+        position: relative;
+        width: 100%; /* Автоматически подстраивает ширину под размер экрана */
+        margin: 0 auto; /* Центрирование */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Прячем все, что выходит за пределы */
+    }
+
+    /* Контейнер для двух картинок */
+    .moving-images {
+        display: flex;
+        flex-wrap: nowrap;
+        animation: moveRight 10s linear infinite; /* Анимация для движения */
+    }
+
+    /* Анимация для плывущего изображения */
+    @keyframes moveRight {
+        0% {
+            transform: translateX(0); /* Начало с начала */
+        }
+        /*50% {*/
+        /*    transform: translateX(-50%); !* Перемещение до половины *!*/
+        /*}*/
+        100% {
+            transform: translateX(-100%); /* Перемещение на весь экран */
+        }
+    }
+
+    .moving-image {
+        width: 100%; /* Ширина изображения 100%, чтобы оно заполнило контейнер */
+        height: auto;
+    }
+
+
+    /*!* Медиазапросы для адаптации на мобильных устройствах *!*/
+    /*@media (max-width: 767.98px) {*/
+    /*    !* Уменьшение размеров для мобильных устройств *!*/
+    /*    .background {*/
+    /*        width: 100%;*/
+    /*    }*/
+
+    /*    .overlay img {*/
+    /*        max-width: 100%; !* Убираем ограничение размера изображения на мобильных устройствах *!*/
+    /*    }*/
+
+    /*    !* Размеры текста для мобильных устройств *!*/
+    /*    .card-text {*/
+    /*        font-size: 0.9rem;*/
+    /*    }*/
+
+    /*    .card-title {*/
+    /*        font-size: 1.2rem;*/
+    /*    }*/
+    /*}*/
+</style>
+
+
+<style>
+
+    .content-card {
+        background-color: #121212;
+        color: white;
+    }
+
+    .rounded {
+        border-radius: 15px;
+    }
+
+    .card{
+        --bs-card-border-radius: 0
+    }
+
+    .card-img-top {
+        margin-bottom: 15px;
+    }
+
+    .staff-card-body {
+        padding: 10px 15px;
+        background-color: #121212;
+    }
+
+    .my-popover {
+        --bs-popover-max-width: 200px;
+        --bs-popover-border-color: white;
+        --bs-popover-header-bg: black;
+        --bs-popover-header-color: black;
+        --bs-popover-body-padding-x: 1rem;
+        --bs-popover-body-padding-y: .5rem;
+    }
+
+    .my-popover1 {
+        --bs-popover-max-width: 200px;
+        --bs-popover-border-color: white;
+        --bs-popover-header-bg: black;
+        --bs-popover-header-color: black;
+        --bs-popover-body-padding-x: 1rem;
+        --bs-popover-body-padding-y: .5rem;
+    }
+
+    .popover {
+        --bs-popover-bg: black;
+        --bs-popover-font-size: 0.8rem;
+    }
+
+    .popover-body {
+        color: white;
+        font-family: "Noto Sans",sans-serif;
+    }
+
+</style>
+
+<!-- JavaScript для активации Popover на hover для всех карточек -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Находим все карточки с классом .staff-card
+        const staffCards = document.querySelectorAll('.staff-card');
+
+        // Для каждой карточки инициализируем Popover и добавляем события
+        staffCards.forEach((card) => {
+            const popover = new bootstrap.Popover(card, {
+                trigger: 'manual' // управляем ручным открытием/закрытием
+            });
+
+            // Показ popover при наведении
+            card.addEventListener('mouseenter', function () {
+                popover.show();
+            });
+
+            // Скрытие popover при уходе курсора
+            card.addEventListener('mouseleave', function () {
+                popover.hide();
+            });
+        });
+    });
+</script>
+
+<style>
+    .heart {
+        position: relative;
+        width: 150px; /* Увеличен размер сердца */
+        height: 150px;
+        background-color: red;
+        margin-top: 100px;
+        display: inline-block;
+        transform: rotate(-45deg);
+        animation: pulse 1.5s infinite;
+        filter: blur(2px); /* Размытые границы */
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.4); /* Свечение */
+    }
+
+    .heart::before, .heart::after {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -75px; /* Сдвиг вверх с увеличенным размером */
+        left: 0;
+    }
+
+    .heart::after {
+        left: 75px; /* Сдвиг вправо с увеличенным размером */
+        top: 0;
+    }
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'down';
+
+        // Determine scroll direction
+        const determineScrollDirection = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY) {
+                scrollDirection = 'down';
+            } else if (currentScrollY < lastScrollY) {
+                scrollDirection = 'up';
+            }
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener('scroll', determineScrollDirection);
+
+        const observerOptions = {
+            threshold: 0.3, // Element should be 30% visible to trigger animation
+            rootMargin: "0px 0px -50px 0px" // Offset for triggering animation slightly earlier
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Only animate elements that are entering the viewport
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.remove('animate-up', 'animate-down');
+
+                    if (scrollDirection === 'down') {
+                        entry.target.classList.add('animate-up');
+                    } else if (scrollDirection === 'up') {
+                        entry.target.classList.add('animate-down');
+                    }
+
+                    // Mark the element as animated
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+    document.getElementById('shopButton').onclick = function() {
+    document.getElementById('shopModal').style.display = 'block';
+}
+
+document.getElementById('closeModal').onclick = function() {
+    document.getElementById('shopModal').style.display = 'none';
+}
+
+// Закрытие модального окна при клике вне его
+window.onclick = function(event) {
+    if (event.target == document.getElementById('shopModal')) {
+        document.getElementById('shopModal').style.display = 'none';
+    }
+}
+
+
+</script>
+
+
+<script>
+    document.addEventListener('scroll', function() {
+        const cards = document.querySelectorAll('.item-card');
+        
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+    
+            // Проверяем, видима ли карточка на экране
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                card.classList.add('visible'); // добавляем класс для отображения
+            } else {
+                card.classList.remove('visible'); // убираем класс если карточка не видима
+            }
+        });
+    });
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        // Получаем все карточки
+        const cards = document.querySelectorAll('.item-card');
+    
+        // Устанавливаем таймер для появления карточек
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible'); // Добавляем класс видимости
+            }, index * 500); // Задержка для каждой карточки
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.item-card');
+        let cardVisibleIndex = 0;
+    
+        const showCard = () => {
+            if (cardVisibleIndex < cards.length) {
+                cards[cardVisibleIndex].classList.add('visible');
+                cardVisibleIndex++;
+            }
+        };
+    
+        const onScroll = () => {
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+    
+            cards.forEach((card) => {
+                const cardRect = card.getBoundingClientRect();
+                const cardTop = cardRect.top + scrollY;
+    
+                // Проверяем, видима ли карточка
+                if (cardTop < windowHeight + scrollY && cardTop + cardRect.height > scrollY) {
+                    showCard();
+                }
+            });
+    
+            // Если не прокручиваем, останавливаем добавление классов
+            if (cardVisibleIndex >= cards.length) {
+                window.removeEventListener('scroll', onScroll);
+            }
+        };
+    
+        window.addEventListener('scroll', onScroll);
+    }); 
+    
+    </script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
