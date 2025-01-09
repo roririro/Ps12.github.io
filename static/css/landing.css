@@ -596,7 +596,7 @@
     left: 0; 
     width: 100%; 
     height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk3.webp') no-repeat center center; 
+    background: src ('https://roririro.github.io/Ps12.github.io/static/img/fonk3.webp') no-repeat center center; 
     background-size: contain; /* Сохраняем пропорции фона */
     z-index: 0; 
     overflow: hidden; /* Скрытие выходящих за рамки элементов */
