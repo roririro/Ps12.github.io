@@ -8,34 +8,17 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <link href="static/css/landing.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="https://mcskill.net/assets/images/servers/88.png" type="image/x-icon">
 
-<style>
 
-@media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
+    <style>
 
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
 
-            .timeline-item:nth-child(even) {
-                left: 0%;
-            }
-
-            .timeline-item::after {
-                left: 15px;
-            }
-
-            .timeline-item:nth-child(even)::after {
-                left: 15px;
-            }
-        }
 
 @font-face {
   font-family: 'McSkill';
@@ -56,12 +39,15 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    background: linear-gradient(to bottom, #4da831, #5da52d); /* Replace with your desired colors */
-    background-size: cover;
+    background-color: #1a5777; /* Основной цвет фона */
+    background-image: url('/static/img/decor.webp'), linear-gradient(to bottom, #1a5777, #1a5777); /* Замените на путь к вашему PNG */
+    background-size: contain, cover; /* Первое изображение будет содержаться в блоке, второе будет растягиваться */
     background-position: center; 
-    background-repeat: no-repeat; 
-
+    background-repeat: repeat-y, no-repeat; /* Первое изображение будет повторяться по вертикали, второе не будет повторяться */
 }
+
+
+
 
         .bordered-img, .loot-chest-card, .staff-card, .botaniaextended-card {
             border-radius: 25px;
@@ -80,21 +66,21 @@ body {
 
         .navbar-brand {
     font-family: 'MinecraftFont', sans-serif;
-    color: rgb(0, 255, 64);
+    color: rgba(0, 255, 64, 0);
     font-size: 1.8rem;
     font-weight: bold;
 }
 
 .nav-link {
-    color: rgb(0, 195, 255) !important;
+    color: rgb(0, 162, 255) !important;
     font-size: 1rem;
-    margin-right: 20px;
+    margin-right: 10px;
     text-decoration: none; /* Убирает подчеркивание */
     border: none; /* Убирает рамку, если она есть */
 }
 
 .nav-link:hover {
-    color: #00fff2 !important; /* Цвет текста при наведении */
+    color: #00ffc8 !important; /* Цвет текста при наведении */
     background: none; /* Убирает фон */
 }
 
@@ -103,13 +89,13 @@ body {
             margin-top: 0;
             z-index: -1;
             width: 100vw;
-            height: 100vh;
+            height: 101vh;
             object-fit: cover;
-            background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 70%, rgb(103, 255, 43) 100%), url("static/img/background.webp");
+            background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 70%, rgba(0, 89, 255, 0) 100%), url("static/img/background.webp");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            filter: blur(4px) brightness(60%); /* Размытие и затемнение */
+            filter: blur(0px) brightness(100%); /* Размытие и затемнение */
         }
 
         /* Контент на переднем плане */
@@ -119,7 +105,7 @@ body {
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: white;
+            color: rgb(255, 255, 255);
             opacity: 0;
             animation: fadeIn 2s ease-out forwards; /* Плавное появление */
         }
@@ -132,54 +118,39 @@ body {
         /* Заголовок со свечением */
         .overlay-content h1 {
             font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
         }
 
         .glow {
             animation: glow 5s infinite alternate;
         }
 
-        @keyframes glow {
-            0% {
-                filter: drop-shadow(0 0 15px rgb(0, 255, 255));
-            }
-            100% {
-                filter: drop-shadow(0 0 30px rgb(0, 255, 13));
-            }
-        }
+
 
         .glow-logo {
             animation: glow 5s infinite alternate;
         }
-
-        @keyframes glow-logo {
-            0% {
-                filter: drop-shadow(0 0 0.1px rgb(0, 255, 255));
-            }
-            100% {
-                filter: drop-shadow(0 0 0.1px rgb(255, 251, 0));
-            }
-        }
-
-        
+   
         /* Магическая кнопка */
         .magic-btn {
-            position: relative;
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: #fff;
-            background: linear-gradient(45deg, #4AE682, #008B85);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            z-index: 10;
-            text-transform: uppercase;
-            text-decoration: none; /* Убирает подчеркивание */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 251, 0, 0.2), 0 0 80px rgba(0, 255, 255, 0.6);
-            overflow: hidden;
-        }
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: #fff;
+    background: linear-gradient(0deg, #00B7AF, #4AE682); /* Горизонтальный градиент */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 10;
+    text-transform: uppercase;
+    text-decoration: none; /* Убирает подчеркивание */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 40px rgba(255, 251, 0, 0), 0 0 80px rgba(0, 255, 255, 0);
+    overflow: hidden;
+}
+
+
 
         .magic-btn:hover {
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
@@ -212,14 +183,14 @@ body {
             padding: 4px 8px;
             font-size: 1.5rem;
             color: #fff;
-            background: linear-gradient(45deg, #4AE682, #008B85);
+            background: linear-gradient(0deg, #00B7AF, #4AE682);
             border: none;
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.4s ease;
             z-index: 10;
             text-decoration: none; /* Убирает подчеркивание */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 251, 0, 0.2), 0 0 80px rgba(0, 255, 255, 0.6);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 40px rgba(255, 251, 0, 0), 0 0 80px rgba(0, 255, 255, 0);
             overflow: hidden;
 
         }
@@ -236,7 +207,7 @@ body {
             left: 50%;
             width: 300%;
             height: 300%;
-            background: radial-gradient(circle, rgba(255, 251, 0, 0.2) 20%, rgba(0, 255, 255, 0.6) 60%);
+            background: radial-gradient(circle, rgba(255, 251, 0, 0) 20%, rgba(0, 255, 255, 0) 60%);
             transform: translate(-50%, -50%);
             opacity: 0;
             transition: all 0.75s ease;
@@ -639,16 +610,16 @@ body {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto" style="margin-right: 5%;">
                     <li class="nav-item">
-                        <a class="nav-link glow" style="font-size: 21px;" href="#" id="shopButton">Магазин</a>
+                        <a class="nav-link glow" style="font-size: 20px;" href="#" id="shopButton">Магазин</a>
                     </li>
                     <li class="nav-item glow">
-                        <a class="nav-link" style="font-size: 21px;" href="https://mcskill.net/mcforum/">Форум</a>
+                        <a class="nav-link" style="font-size: 20px;" href="https://mcskill.net/mcforum/">Форум</a>
                     </li>
                     <li class="nav-item glow">
-                        <a class="nav-link" style="font-size: 21px;" href="https://u.mcskill.net/dissupport">Поддержка</a>
+                        <a class="nav-link" style="font-size: 20px;" href="https://u.mcskill.net/dissupport">Поддержка</a>
                     </li>
                     <li class="nav-item glow">
-                        <a class="nav-link" style="font-size: 21px;" href="https://discord.gg/mcskill">Discord</a>
+                        <a class="nav-link" style="font-size: 20px;" href="https://discord.gg/mcskill">Discord</a>
                     </li>
     
                     <li class="nav-item">
@@ -693,29 +664,33 @@ body {
 
 
 
-
-<!-- Фоновое изображение с градиентом -->
-<div class="background-img"></div>
-
 <!-- Центральный текст и кнопка -->
 <div class="overlay-content">
 
-    
-    <h1 class="glow" style="margin-bottom: 20px; position: relative;">
+    <h1 class="glow" style="margin-bottom: 20px; font-size: 30px; position: relative;">
+        Вайп и Обновление!
+
+    <h1 class="glow" style="margin-bottom: 20px; font-size: 100px; position: relative;">
         Pixelmon
 
     </h1>
-    <h1 class="glow" style="margin-bottom: 20px; position: relative;">
+    <h1 class="glow" style="margin-bottom: 20px; font-size: 60px; position: relative;">
         Ultimate
 
     </h1>
 
-    <h1 class="glow" style="margin-bottom: 20px; position: relative;">
-        Вайп и Обновление!
-
     </h1>
-    <a href="https://mcskill.net/start" class="magic-btn ">Начать игру</a>
+    <a href="https://mcskill.net/start" class="magic-btn" style="font-size: 25px;">Начать игру</a>
 </div>
+
+
+
+
+
+<!-- Фоновое изображение с градиентом -->
+<div class="background-img"></div>
+
+
 
 
 <!--  Описание сервера  -->
@@ -727,6 +702,10 @@ body {
 
 
     <!-- контент Бонусы -->
+
+
+<!-- ФОТО ВДОЛЬ ЭКРАНА -->  
+
 
 
 
@@ -754,7 +733,7 @@ body {
 
 <!-- Группа 2 -->
 <div class="item-section2">
-    <div class="item-card visible right">
+    <div class="item-card visible left">
         <div class="card-background2"></div>
         <div class="item-card-content2">
             <img class="item-image2" src="/static/img/r2.webp" alt="Описание изображения"> <!-- Новое изображение -->
@@ -776,9 +755,9 @@ body {
     <!-- Другие карточки группы 2 -->
 </div>
 
-<!-- Группа 2 -->
+<!-- Группа 3 -->
 <div class="item-section3">
-    <div class="item-card visible left">
+    <div class="item-card visible right">
         <div class="card-background3"></div>
         <div class="item-card-content3">
             <img class="item-image3" src="/static/img/r3.webp" alt="Описание изображения"> <!-- Новое изображение -->
@@ -799,14 +778,52 @@ body {
     <!-- Другие карточки группы 2 -->
 </div>
 
-    <!-- Добавьте больше карточек по необходимости -->
+<!-- Группа 4 -->
+<div class="item-section4">
+    <div class="item-card visible right">
+        <div class="card-background4"></div>
+        <div class="item-card-content4">
+            <img class="item-image4" src="/static/img/r4.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box4">Сражение против <br> “Искаженных” покемонов<br></div>
+            <div class="item-text4">
+                <br>
+                Постепенно из за странных аномалий<br>
+                в городе (спавне) образовалось<br>
+                несколько новых биомов кишащих<br>
+                агрессивными покемонами.<br>
+                Ваша задача совместно с учеными<br>
+                города узнать причину проблемы<br>
+                и искоренить ее!<br>
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 2 -->
+</div>
 
 
-
-
-
-
-
+<!-- Группа 4 -->
+<div class="item-section5">
+    <div class="item-card visible left">
+        <div class="card-background5"></div>
+        <div class="item-card-content5">
+            <img class="item-image5" src="/static/img/r5.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box5">Новые покеболл и<br> магический камень<br></div>
+            <div class="item-text5">
+                На наш сервер были добавлены<br>
+                два совершенно новых предмета:<br>
+                • Скиллболл<br>
+                покеболл имеющий шанс поимки<br>
+                x2,2 + 0,5 за каждый 5й уровень<br>
+                пт (в бою)<br>
+                • Камень пропуска задания<br>
+                магический камень<br>
+                позволяющий пропускать часть<br>
+                квестов<br>
+            </div>
+        </div>
+    </div>
+    <!-- Другие карточки группы 2 -->
+</div>
 
 
 
@@ -1264,13 +1281,11 @@ window.onclick = function(event) {
         };
     
         window.addEventListener('scroll', onScroll);
-    });
-    
-
-
-    
+    }); 
     
     </script>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
