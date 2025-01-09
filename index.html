@@ -826,6 +826,48 @@ body {
 </div>
 
 
+<!-- Группа 1 -->
+<div class="item-section6">
+    <div class="item-card6 visible">
+        <div class="card-background6"></div>
+        <div class="item-card-content6">
+            <img class="item-image6" src="/static/img/Simulator.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box6">Симулятор боя</div>
+            <div class="item-text6 hidden">
+                <br>
+                В симуляторе боя был <br>
+                изменен интерфейс<br>
+                 для более простой<br>
+                эксплуатации.<br>
+                Подробнее о<br>
+                 симуляторе боя<br>
+                можете узнать в гайде <br>
+                <a href="https://mcskill.net/mcforum/index.php?/topic/175017-гайд-9-поколение-pixelmon-ultimate-1122/" target="_blank">Гайд по 9-му поколению</a>.<br>
+            </div>
+        </div>
+    </div>
+    <div class="item-card7 visible">
+        <div class="interaction-area7">
+        <div class="card-background7"></div>
+        <div class="item-card-content7">
+            <img class="item-image7" src="/static/img/InfinityChest1.webp" alt="Описание изображения"> <!-- Новое изображение -->
+            <div class="item-title-box7">бесконечный<br>сундук</div>
+            <div class="item-text7 hidden">
+                <br>
+                в бесконечный сундук<br>
+                было добавлено<br>
+                большее количество<br>
+                слотов, а также<br>
+                сортировка предметов.<br>
+                Крафт был упрощен<br>
+                <a href="https://mcskill.net/mcforum/index.php?/topic/175018-гайд-10-поколение-pixelmon-ultimate-1122/" target="_blank">Гайд по 10-му поколению</a>.<br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 
@@ -1237,18 +1279,6 @@ window.onclick = function(event) {
         });
     });
     
-    document.addEventListener("DOMContentLoaded", function() {
-        // Получаем все карточки
-        const cards = document.querySelectorAll('.item-card');
-    
-        // Устанавливаем таймер для появления карточек
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('visible'); // Добавляем класс видимости
-            }, index * 500); // Задержка для каждой карточки
-        });
-    });
-    
     document.addEventListener('DOMContentLoaded', () => {
         const cards = document.querySelectorAll('.item-card');
         let cardVisibleIndex = 0;
@@ -1283,6 +1313,62 @@ window.onclick = function(event) {
         window.addEventListener('scroll', onScroll);
     }); 
     
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.item-card');
+
+    // Устанавливаем таймер для появления карточек
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('visible'); // Добавляем класс видимости
+        }, index * 500); // Задержка для каждой карточки
+    });
+});
+
+
+
+document.querySelectorAll('.item-card6').forEach(card => {
+    const textElement = card.querySelector('.item-text6');
+    const titleElement = card.querySelector('.item-title-box6');
+    const imageElement = card.querySelector('.item-image6',);
+
+
+    card.addEventListener('mouseenter', () => {
+        titleElement.style.display = 'none';
+        imageElement.style.display = 'none';
+        textElement.style.display = 'block'; // Показываем текст при наведении
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        titleElement.style.display = 'block'; // Показываем заголовок при покидании
+        imageElement.style.display = 'block'; // Показываем изображение при покидании
+        textElement.style.display = 'none'; // Скрываем текст при покидании
+    });
+});
+
+document.querySelectorAll('.item-card7').forEach(card => {
+    const textElement = card.querySelector('.item-text7');
+    const titleElement = card.querySelector('.item-title-box7');
+    const imageElement = card.querySelector('.item-image7');
+    const interactionArea = card.querySelector('.interaction-area7');
+
+
+
+
+    interactionArea.addEventListener('mouseenter', () => {
+        titleElement.style.display = 'none';
+        imageElement.style.display = 'none';
+        textElement.style.display = 'block'; // Показываем текст при наведении
+    });
+    
+    interactionArea.addEventListener('mouseleave', () => {
+        titleElement.style.display = 'block'; // Показываем заголовок при покидании
+        imageElement.style.display = 'block'; // Показываем изображение при покидании
+        textElement.style.display = 'none'; // Скрываем текст при покидании
+    });
+});
+
+
     </script>
 
 
