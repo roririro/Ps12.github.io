@@ -1,712 +1,72 @@
+@font-face {
+    font-family: 'McSkill';
+    src: url('../../static/font/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Обнуление стилей браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'McSkill', sans-serif;
+    background-color: #ffffff;
+}
+
+/* Стили для фона с анимированными формами */
+.lava-lamp-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
 
 /* Основные параметры для "капель" */
 .blob {
     position: absolute;
     background: radial-gradient(circle, rgba(255, 0, 150, 1) 0%, rgba(0, 204, 255, 1) 100%);
-    filter: blur(200px); /* Увеличено размытие */
+    filter: blur(200px);
     border-radius: 50%;
     animation: moveBlobs 20s infinite;
     opacity: 0.6;
 }
 
-/* Карточки */
-
-.item-section {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: left; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-.item-card {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 800px; 
-    height: 400px; 
-    border: none; 
-    border-radius: 50px; 
-    position: relative; 
-    overflow: visible; 
-}
-
-.card-background {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk.webp') no-repeat center center; 
-    background-size: contain; 
-    z-index: 1; 
-}
-
-.item-card-content {
-    position: absolute; 
-    top: 45%; 
-    left: 20px; 
-    transform: translateY(-50%); 
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: auto; 
-    padding: 20px; 
-}
-
-.item-image {
-    position: absolute; 
-    top: 50%; 
-    right: -320px; 
-    width: 270px; 
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-card.visible {
-    opacity: 1; 
-}
-
-.item-title-box {
-    font-size: 60px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 20px; 
-    margin-bottom: 15px; 
-    margin-left: 90px; 
-    text-align: center; 
-    letter-spacing: 3px;
-}
-
-.item-text {
-    font-size: 17px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: left; 
-    margin: 0; 
-    padding: 0; 
-    letter-spacing: 2px;
-}
-
-
-/* Группа 2 */
-.item-section2 {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: left; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-.item-card2 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 800px; 
-    height: 400px; 
-    border: none; 
-    border-radius: 50px; 
-    position: relative; 
-    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
-}
-
-.card-background2 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk.webp') no-repeat center center; 
-    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
-    z-index: 1; 
-}
-
-.item-card-content2 {
-    position: absolute; /* Изменено: абсолютное позиционирование */
-    top: 45%; /* Центрируем по вертикали */
-    left: 20px; /* Фиксированное значение слева */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: auto; /* Позволяем контенту определять высоту */
-    padding: 20px; /* Убираем отступы */
-}
-
-.item-image2 {
-    position: absolute; 
-    top: 52%; /* Центрируем по вертикали */
-    right: -320px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
-    width: 360px; /* Увеличьте ширину изображения, если необходимо */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-title-box2 {
-    font-size: 25px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 20px; 
-    margin-bottom: 15px; 
-    margin-left: 20px; /* Увеличиваем отступ сверху */
-    text-align: center; 
-    letter-spacing: 3px;
-}
-
-.item-text2 {
-    font-size: 17px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: left; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-}
-
-/* Группа 3 */
-.item-section3 {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: left; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-.item-card3 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 800px; 
-    height: 400px; 
-    border: none; 
-    border-radius: 50px; 
-    position: relative; 
-    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
-}
-
-.card-background3 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk2.webp') no-repeat center center; 
-    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
-    z-index: 1; 
-}
-
-.item-card-content3 {
-    position: absolute; /* Изменено: абсолютное позиционирование */
-    top: 45%; /* Центрируем по вертикали */
-    right: 20px; /* Перемещаем текст вправо */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end; /* Выравниваем текст по правому краю */
-    height: auto; /* Позволяем контенту определять высоту */
-    padding: 20px; /* Убираем отступы */
-}
-
-.item-image3 {
-    position: absolute; 
-    top: 50%; /* Центрируем по вертикали */
-    left: -248px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
-    width: 350px; /* Увеличьте ширину изображения, если необходимо */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-title-box3 {
-    font-size: 25px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 15px; 
-    margin-bottom: 10px; 
-    text-align: right; /* Изменено: выравнивание текста по правому краю */
-    letter-spacing: 3px;
-}
-
-.item-text3 {
-    font-size: 17px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: right; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-}
-
-/* Группа 4 */
-.item-section3 {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: left; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-.item-card3 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 800px; 
-    height: 400px; 
-    border: none; 
-    border-radius: 50px; 
-    position: relative; 
-    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
-}
-
-.card-background3 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk2.webp') no-repeat center center; 
-    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
-    z-index: 1; 
-}
-
-.item-card-content3 {
-    position: absolute; /* Изменено: абсолютное позиционирование */
-    top: 45%; /* Центрируем по вертикали */
-    right: 20px; /* Перемещаем текст вправо */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end; /* Выравниваем текст по правому краю */
-    height: auto; /* Позволяем контенту определять высоту */
-    padding: 20px; /* Убираем отступы */
-}
-
-.item-image3 {
-    position: absolute; 
-    top: 50%; /* Центрируем по вертикали */
-    left: -248px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
-    width: 350px; /* Увеличьте ширину изображения, если необходимо */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-title-box3 {
-    font-size: 25px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 15px; 
-    margin-bottom: 10px; 
-    text-align: right; /* Изменено: выравнивание текста по правому краю */
-    letter-spacing: 3px;
-}
-
-.item-text3 {
-    font-size: 17px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: right; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-}
-
-
-/* Группа 5 */
-.item-section4 {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: left; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-.item-card4 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 800px; 
-    height: 400px; 
-    border: none; 
-    border-radius: 50px; 
-    position: relative; 
-    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
-}
-
-.card-background4 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk2.webp') no-repeat center center; 
-    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
-    z-index: 1; 
-}
-
-.item-card-content4 {
-    position: absolute; /* Изменено: абсолютное позиционирование */
-    top: 45%; /* Центрируем по вертикали */
-    right: 20px; /* Перемещаем текст вправо */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end; /* Выравниваем текст по правому краю */
-    height: auto; /* Позволяем контенту определять высоту */
-    padding: 20px; /* Убираем отступы */
-}
-
-.item-image4 {
-    position: absolute; 
-    top: 70%; /* Центрируем по вертикали */
-    left: -250px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
-    width: 350px; /* Увеличьте ширину изображения, если необходимо */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-title-box4 {
-    font-size: 25px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 15px; 
-    margin-bottom: 10px; 
-    text-align: center; /* Изменено: выравнивание текста по правому краю */
-    letter-spacing: 3px;
-}
-
-.item-text4 {
-    font-size: 17px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: right; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-}
-
-/* Группа 6 */
-.item-section5 {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: left; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-.item-card5 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 800px; 
-    height: 400px; 
-    border: none; 
-    border-radius: 50px; 
-    position: relative; 
-    overflow: visible; /* Изменено: разрешаем выходить за края карточки */
-}
-
-.card-background5 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk.webp') no-repeat center center; 
-    background-size: contain; /* Изменено: сохраняем пропорции и не обрезаем фон */
-    z-index: 1; 
-}
-
-.item-card-content5 {
-    position: absolute; /* Изменено: абсолютное позиционирование */
-    top: 45%; /* Центрируем по вертикали */
-    left: 20px; /* Фиксированное значение слева */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: auto; /* Позволяем контенту определять высоту */
-    padding: 20px; /* Убираем отступы */
-}
-
-.item-image5 {
-    position: absolute; 
-    top: 52%; /* Центрируем по вертикали */
-    right: -320px; /* Измените это значение, чтобы регулировать, насколько далеко изображение выходит за пределы */
-    width: 360px; /* Увеличьте ширину изображения, если необходимо */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-title-box5 {
-    font-size: 24px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 30px; 
-    margin-bottom: 15px; 
-    margin-left: 20px; /* Увеличиваем отступ сверху */
-    text-align: left; 
-    letter-spacing: 3px;
-}
-
-.item-text5 {
-    font-size: 16.5px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: left; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-}
-
-/* Группа 7 2 на 1 уровне  */
-
-.item-section6 {
-    perspective: 2000px; 
-    display: flex; 
-    flex-wrap: nowrap; /* Карточки на одной строке */
-    justify-content: space-between; /* Равномерное распределение карточек */
-    align-items: center; 
-    height: 100vh; 
-}
-
-.card-background6 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk3.webp') no-repeat center center; 
-    background-size: contain; /* Сохраняем пропорции фона */
-    z-index: 0; 
-    overflow: hidden; /* Скрытие выходящих за рамки элементов */
-}
-
-.item-image6 {
-    position: absolute; 
-    top: 55%; /* Центрируем по вертикали */
-    right: 35px; /* Регулировка для выхода изображения за пределы, уменьшено */
-    width: 220px; /* Уменьшенная ширина изображения */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-card6 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 300px; /* Установите фиксированную ширину для одинакового размера карточек */
-    height: 400px; /* Установите фиксированную высоту для одинакового размера карточек */
-    border: none; 
-    border-radius: 15px; /* Уменьшение радиуса для более современного вида */
-    position: relative; 
-    overflow: hidden; 
-    flex-shrink: 0; /* Не позволяйте карточкам сжиматься */
-    display: flex; /* Используйте flex для выравнивания содержимого */
-    flex-direction: column; /* Вертикальное выравнивание содержимого */
-    transform: scale(2.5); /* Увеличиваем размер карточки на 5% при наведении */
-}
-
-.item-card6.visible {
-    opacity: 1; /* Показываем карточки, если у них есть класс visible */
-}
-
-.item-card-content6 {
-    position: relative; 
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Центрируем содержимое по вертикали */
-    align-items: center; /* Центрируем содержимое по горизонтали */
-    height: 100%; /* Занимаем всю высоту карточки */
-    padding: 20px; 
-    text-align: center; /* Центрируем текст */
-    box-sizing: border-box; /* Учитываем padding в размере карточки */
-}
-
-.item-card6:hover .item-text6 {
-    display: block; /* Показываем текст при наведении */
-}
-
-.item-title-box6 {
-    font-size: 12px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 30px; 
-    margin-bottom: 150px; 
-    margin-left: 0px; /* Увеличиваем отступ сверху */
-    text-align: center; 
-    letter-spacing: 3px;
-}
-
-.item-text6 {
-    font-size: 10.5px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: center; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-    display: none; /* Скрываем текст по умолчанию */
-}
-
-
-.item-card6:hover .item-title-box6,
-.item-card6:hover .item-image6 {
-    display: none; /* Скрываем заголовок и изображение при наведении */
-}
-
-/* Группа 7 2 на 1 уровне  */
-
-.item-section7 {
-    perspective: 1000px; 
-    display: flex; 
-    flex-wrap: nowrap; /* Карточки на одной строке */
-    justify-content: space-between; /* Равномерное распределение карточек */
-    align-items: center; 
-    height: 100vh; 
-}
-
-.card-background7 {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: url('https://roririro.github.io/Ps12.github.io/static/img/fonk3.webp') no-repeat center center; 
-    background-size: contain; /* Сохраняем пропорции фона */
-    z-index: 0; 
-    overflow: hidden; /* Скрытие выходящих за рамки элементов */
-}
-
-.item-image7 {
-    position: absolute; 
-    top: 55%; /* Центрируем по вертикали */
-    right: 80px; /* Регулировка для выхода изображения за пределы, уменьшено */
-    width: 140px; /* Уменьшенная ширина изображения */
-    height: auto; 
-    transform: translateY(-50%); 
-    z-index: 1; 
-}
-
-.item-card7 {
-    opacity: 0; /* Скрываем карточки по умолчанию */
-    transition: opacity 3s ease; /* Плавный переход для изменения непрозрачности */
-    margin: 20px; 
-    width: 300px; /* Установите фиксированную ширину для одинакового размера карточек */
-    height: 400px; /* Установите фиксированную высоту для одинакового размера карточек */
-    border: none; 
-    border-radius: 15px; /* Уменьшение радиуса для более современного вида */
-    position: relative; 
-    overflow: hidden; 
-    flex-shrink: 0; /* Не позволяйте карточкам сжиматься */
-    display: flex; /* Используйте flex для выравнивания содержимого */
-    flex-direction: column; /* Вертикальное выравнивание содержимого */
-    transform: scale(2.5); /* Увеличиваем размер карточки на 5% при наведении */
-}
-
-.item-card7.visible {
-    opacity: 1; /* Показываем карточки, если у них есть класс visible */
-}
-
-.item-card-content7 {
-    position: relative; 
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Центрируем содержимое по вертикали */
-    align-items: center; /* Центрируем содержимое по горизонтали */
-    height: 100%; /* Занимаем всю высоту карточки */
-    padding: 20px; 
-    text-align: center; /* Центрируем текст */
-    box-sizing: border-box; /* Учитываем padding в размере карточки */
-}
-
-.item-card7:hover .item-text6 {
-    display: block; /* Показываем текст при наведении */
-}
-
-.item-title-box7 {
-    font-size: 12px; 
-    font-weight: 600; 
-    color: #00573d; 
-    margin-top: 30px; 
-    margin-bottom: 150px; 
-    margin-left: 0px; /* Увеличиваем отступ сверху */
-    text-align: center; 
-    letter-spacing: 3px;
-}
-
-.item-text7 {
-    font-size: 10.5px; 
-    font-weight: 700; 
-    color: #10371f; 
-    text-align: center; 
-    margin: 0; 
-    padding: 0; /* Убираем отступы, если они есть */
-    letter-spacing: 2px;
-    display: none; /* Скрываем текст по умолчанию */
-}
-
-
-.item-card7:hover .item-title-box6,
-.item-card7:hover .item-image6 {
-    display: none; /* Скрываем заголовок и изображение при наведении */
-}
-
-.interaction-area7 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-
-}
-
-
-
-
-
-
 /* Параметры каждой отдельной "капли" */
 .blob:nth-child(1) {
-    width: 800px; height: 800px; top: 5%; left: 5%; animation-duration: 25s;
+    width: 800px;  
+    height: 800px; 
+    top: 5%;
+    left: 5%;
+    animation-duration: 25s;
 }
 
 .blob:nth-child(2) {
-    width: 900px; height: 900px; top: 40%; left: 20%; animation-duration: 22s;
+    width: 900px;  
+    height: 900px; 
+    top: 40%;
+    left: 20%;
+    animation-duration: 22s;
 }
 
 .blob:nth-child(3) {
-    width: 700px; height: 700px; top: 60%; left: 65%; animation-duration: 27s;
+    width: 700px;  
+    height: 700px; 
+    top: 60%;
+    left: 65%;
+    animation-duration: 27s;
 }
 
 .blob:nth-child(4) {
-    width: 1000px; height: 1000px; top: 30%; left: 80%; animation-duration: 30s;
+    width: 1000px; 
+    height: 1000px; 
+    top: 30%;
+    left: 80%;
 }
 
 /* Анимация для "капель" */
@@ -715,7 +75,7 @@
         transform: translate(0, 0) scale(1);
     }
     50% {
-        transform: translate(100px, -100px) scale(1.3); /* Увеличено смещение */
+        transform: translate(100px, -100px) scale(1.3);
     }
     100% {
         transform: translate(0, 0) scale(1);
@@ -724,70 +84,140 @@
 
 /* Стили для основного контента */
 .content {
-    position: static;
+    position: relative;
     z-index: 1;
     text-align: center;
     color: white;
-    padding-top: 40vh;
+    padding-top: 20vh;
 }
 
-/* Модальное окно */
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    z-index: 1000; /* На переднем плане */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.801); /* Черный фон с прозрачностью */
-    animation: fadeIn 0s; /* Плавная анимация при появлении */
+/* Полоска прокручивания для WebKit браузеров */
+::-webkit-scrollbar {
+    width: 0px; 
+    height: 8px; 
 }
 
+@keyframes scrollBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, 
+        #065096, 
+        #1A6BAE, 
+        #2A8BC9, 
+        #5AB1E8, 
+        #A0D8FF
+    );
+    background-size: 300%; 
+    animation: scrollBackground 0s linear infinite; 
+    border-radius: 20px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00B7AF, #4AE682); 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #4AE682, #00B7AF); 
+}
+
+/* Общие стили для модального окна */
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; 
+    max-width: 600px; 
+    height: auto; 
+    padding: 5%; 
+    background-image: url('/static/img/mobal.webp');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+    overflow: visible;
     background-color: rgba(0, 0, 0, 0);
-    margin: 15% auto; /* Центрирование по вертикали и горизонтали */
-    padding: 20px;
-    border: 2px solid #ffffff00; /* Уменьшаем ширину границы */
-    width: 20%; /* Ширина модального окна */
-    text-align: center; /* Центрирование текста */
-    animation: borderGlow 1.5s infinite; /* Применяем анимацию к границе */
 }
 
 /* Кнопка закрытия */
 .close {
-    color: #000000; /* Цвет для кнопки закрытия */
-    float: right; /* Справа */
-    font-size: 28px; /* Размер шрифта */
-    font-weight: bold; /* Жирный шрифт */
-    display: none; /* Скрыто по умолчанию */
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    color: #000000;
+    font-size: 2vw;
+    font-weight: bold;
+    cursor: pointer;
+    display: none; 
 }
 
 .close:hover,
 .close:focus {
-    color: rgb(0, 247, 255); /* Цвет при наведении */
-    text-decoration: none; /* Без подчеркивания */
-    cursor: pointer; /* Курсор в виде руки */
+    color: rgb(0, 247, 255);
+    text-decoration: none;
 }
 
-/* Кнопки в модальном окне */
+/* Заголовок модального окна */
+.modal-title2 {
+    text-align: center;
+    font-size: 1.5vw; 
+    margin: 0vh 0; 
+    color: #ffffff;
+    position: relative;
+}
+
+/* Кнопки */
 .modal-button {
-    margin: 10px; /* Отступы для кнопок */
-    padding: 10px 20px; /* Внутренние отступы */
-    font-size: 28px; /* Размер шрифта */
-    cursor: pointer; /* Курсор в виде руки */
-    border-radius: 55px; /* Закругление углов кнопок */
-    background: linear-gradient(45deg, #09ff00, #00eeff); /* Цвет фона кнопки (по желанию) */
-    border: none; /* Убираем рамку (по желанию) */
-    color: white; /* Цвет текста кнопки */
-    text-decoration: none; /* Убираем подчеркивание */
-    transition: color 0.3s, text-shadow 0.3s; /* Плавный переход для цвета текста и теней */
+    width: 70%; 
+    max-width: 300px; 
+    height: 7vh; 
+    margin: 4vh 0; 
+    padding: 2% 5%; 
+    font-size: 1.5vw; 
+    cursor: pointer;
+    border-radius: 55px;
+    background: linear-gradient(25deg, #004fb7, #4acfe6);
+    border: none;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-button:hover {
-    color: #000000; /* Цвет текста при наведении */
-    text-shadow: 0 0 10px #000000, 0 0 20px #09ff00; /* Светящийся эффект для текста */
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(132, 239, 247, 0.3);
+}
+
+/* Иконки внутри кнопок */
+.modal-button img {
+    width: 3vw; 
+    max-width: 30px; 
+    height: auto; 
+    margin-right: 1vw; 
+}
+
+/* Позиционирование кнопок */
+.button11, .button22, .button33 {
+    position: relative;
+    margin-top: 1vh; 
 }
 
 /* Анимации */
@@ -796,73 +226,347 @@
     to {opacity: 1;}
 }
 
-@keyframes borderGlow {
-    0% {
-        border-color: #09ff00; /* Цвет 1 */
-        box-shadow: 0 0 20px #09ff00; /* Начальный свет */
+/* Низ сайта */
+footer {
+    background-image: url('/static/img/niz.webp');
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 62px;
+    border-top-right-radius: 62px;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.logo img {
+    position: absolute;
+    top: 10px; 
+    left: -1vw; 
+    max-width: 13vw;
+    height: auto;
+}
+
+/* Левый блок: логотип и кнопки соцсетей */
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Кнопки соцсетей */
+.top-buttons {
+    display: flex;
+    gap: 1vw;               
+    margin-left: 6vw;       
+}
+
+.footer-button {
+    padding: 0;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 25px; 
+    height: 25px; 
+    border: 30px solid rgba(255, 255, 255, 0); 
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.footer-button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
+}
+
+.button1 {
+    background-image: url('/static/img/ds.png');
+}
+
+.button2 {
+    background-image: url('/static/img/vk.png');
+}
+
+.button3 {
+    background-image: url('/static/img/tg.png');
+}
+
+/* Центральные кнопки */
+.center-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw; 
+    align-items: center; 
+}
+
+.custom-start {
+    background: linear-gradient(0deg, #00B7AF, #4AE682);
+    color: white;
+    padding: 0.6vw 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 60px;
+    width: 19vw;
+    font-size: 1.5vw;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.custom-register {
+    position: relative;
+    display: inline-block;
+    width: 12vw;
+    padding: 0.3vw 0;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1vw;
+    line-height: 1.5;
+    margin-top: -0.5vw;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+
+.custom-register::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, #00B7AF, #4AE682);
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    z-index: -1;
+}
+
+/* Общие стили для кнопок */
+.gradient-button {
+    display: inline-block;   
+    padding: 10px 20px;     
+    color: white;           
+    text-align: center;     
+    text-decoration: none;   
+    background: linear-gradient(0deg, #00B7AF, #4AE682);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    border-radius: 60px;
+}
+
+.gradient-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
+}
+
+/* Правые кнопки */
+.right-buttons {
+    display: flex;
+    gap: 1vw;               
+    margin-right: -3vw;       
+}
+
+/* Адаптация для разных экранов */
+@media (max-width: 1200px) {
+    .logo img {
+        max-width: 15vw;
     }
-    50% {
-        border-color: #00eeff; /* Цвет 2 */
-        box-shadow: 0 0 20px #00eeff; /* Яркий свет */
+
+    .custom-start {
+        width: 25vw;
+        font-size: 2vw;
     }
-    100% {
-        border-color: #09ff00; /* Цвет 1 */
-        box-shadow: 0 0 20px #09ff00; /* Начальный свет */
+
+    .custom-register {
+        width: 18vw;
+        font-size: 1.5vw;
     }
 }
 
-@keyframes glowing {
-    0% {
-        background-color: #1a1a2eb7; /* Очень темный синий */
+@media (max-width: 992px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
     }
-    25% {
-        background-color: #16213eb7; /* Темный индиго */
+
+    .left-section {
+        justify-content: center;
+        margin-bottom: 20px;
     }
-    50% {
-        background-color: #0f3460b7; /* Темно-синий */
+
+    .logo img {
+        position: static;
+        max-width: 20vw;
     }
-    75% {
-        background-color: #533483b7; /* Темный фиолетовый */
+
+    .top-buttons {
+        margin-left: 0;
     }
-    100% {
-        background-color: #16213eb7; /* Темный розовый */
+
+    .center-buttons {
+        order: 2;
+    }
+
+    .right-buttons {
+        order: 3;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .custom-start {
+        width: 30vw;
+        font-size: 2.5vw;
+    }
+
+    .custom-register {
+        width: 22vw;
+        font-size: 2vw;
     }
 }
 
-/* Навигационная панель */
-.rounded-navbar {
-    position: fixed; /* Фиксирует элемент в верхней части окна */
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    border-bottom-left-radius: 0px; 
-    border-bottom-right-radius: 0px; 
-    overflow: hidden; 
-    animation: glowing 8s infinite alternate; 
-    z-index: 1000; 
-    box-shadow: 0 4px 10px rgba(26, 26, 46, 0.6), 
-                0 4px 20px rgba(22, 33, 62, 0.6), 
-                0 4px 30px rgba(15, 52, 96, 0.6), 
-                0 4px 40px rgba(83, 52, 131, 0.6); 
+@media (max-width: 768px) {
+    .logo img {
+        max-width: 40vw;
+    }
+
+    .custom-start {
+        width: 40vw;
+        font-size: 3vw;
+    }
+
+    .custom-register {
+        width: 30vw;
+        font-size: 2.5vw;
+    }
+
 }
 
-/* Стилизация ссылок внутри навигационной панели */
-.rounded-navbar a {
-    color: rgb(255, 255, 255); 
-    text-decoration: none; 
-    padding: 10px; 
-    display: inline-block; 
+@media (max-width: 576px) {
+    .logo img {
+        max-width: 40vw;
+    }
+
+    .custom-start {
+        width: 50vw;
+        font-size: 4vw;
+    }
+
+    .custom-register {
+        width: 40vw;
+        font-size: 3.5vw;
+    }
 }
 
-/* Гайд  */
-.item-card-content {
-    padding: 10px; /* Отступы для содержимого карточки */
+@media (max-width: 400px) {
+    .logo img {
+        max-width: 40vw;
+    }
+
+    .custom-start {
+        width: 60vw;
+        font-size: 5vw;
+    }
+
+    .custom-register {
+        width: 50vw;
+        font-size: 4.5vw;
+    }
 }
 
-.item-title-box {
-    font-size: 24px; /* Размер шрифта заголовка */
-    font-weight: bold; /* Жирный шрифт для заголовка */
-    margin-bottom: 10px; /* Отступ снизу для заголовка */
-    text-align: left; /* Выравнивание текста по левому краю */
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+
+    .navbar-nav {
+        width: 100%; 
+        justify-content: center; 
+    }
+
+    .nav-link {
+        font-size: 1.2rem; 
+        margin: 5px 0; 
+    }
+
+    .overlay-content h1 {
+        font-size: 3rem; 
+    }
+
+    .overlay-content h2 {
+        font-size: 2.5rem; 
+    }
+
+    .overlay-content h3 {
+        font-size: 1.5rem; 
+    }
+
+    .magic-btn {
+        font-size: 1.2rem; 
+        padding: 0.5rem 1rem; 
+    }
+
+    .content-section {
+        padding: 20px; 
+    }
+
+    .card {
+        margin-bottom: 20px; 
+    }
+
+    .staff-card img {
+        width: 80px; 
+        height: 80px; 
+    }
+
+    .footer-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .center-buttons {
+        flex-direction: column; 
+    }
+
+    .gradient-button {
+        margin: 5px 0; 
+    }
 }
 
+/* Планшеты */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar {
+        padding: 10px; 
+    }
+
+    .overlay-content h1 {
+        font-size: 4rem; 
+    }
+
+    .overlay-content h2 {
+        font-size: 3rem; 
+    }
+
+    .overlay-content h3 {
+        font-size: 2rem; 
+    }
+
+    .magic-btn {
+        font-size: 1.5rem; 
+    }
+}
