@@ -1,3 +1,4 @@
+/* ШРИФТ*/
 @font-face {
     font-family: 'McSkill';
     src: url('../../static/font/minecraft.ttf') format('truetype');
@@ -17,78 +18,129 @@ body {
     background-color: #ffffff;
 }
 
-/* Стили для фона с анимированными формами */
-.lava-lamp-background {
+/* ГЛАВНЫЙ ТЕКСТ ЭКРАНА  */
+.overlay-content {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards; /* Плавное появление */
+    z-index: 1; /* Убедитесь, что текст поверх других элементов */
 }
 
-/* Основные параметры для "капель" */
-.blob {
-    position: absolute;
-    background: radial-gradient(circle, rgba(255, 0, 150, 1) 0%, rgba(0, 204, 255, 1) 100%);
-    filter: blur(200px);
-    border-radius: 50%;
-    animation: moveBlobs 20s infinite;
-    opacity: 0.6;
-}
-
-/* Параметры каждой отдельной "капли" */
-.blob:nth-child(1) {
-    width: 800px;  
-    height: 800px; 
-    top: 5%;
-    left: 5%;
-    animation-duration: 25s;
-}
-
-.blob:nth-child(2) {
-    width: 900px;  
-    height: 900px; 
-    top: 40%;
-    left: 20%;
-    animation-duration: 22s;
-}
-
-.blob:nth-child(3) {
-    width: 700px;  
-    height: 700px; 
-    top: 60%;
-    left: 65%;
-    animation-duration: 27s;
-}
-
-.blob:nth-child(4) {
-    width: 1000px; 
-    height: 1000px; 
-    top: 30%;
-    left: 80%;
-}
-
-/* Анимация для "капель" */
-@keyframes moveBlobs {
+/* Анимация плавного появления */
+@keyframes fadeIn {
     0% {
-        transform: translate(0, 0) scale(1);
-    }
-    50% {
-        transform: translate(100px, -100px) scale(1.3);
+        opacity: 0;
+        transform: translate(-50%, -60%);
     }
     100% {
-        transform: translate(0, 0) scale(1);
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
 
-/* Стили для основного контента */
-.content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
+/* Стили для заголовка "Pixelmon" */
+.pixelmon-title {
+    font-size: 5rem;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    animation: float 10s infinite ease-in-out; /* Анимация движения */
+    margin: 0; /* Убираем отступы */
+}
+
+/* Стили для заголовка "Ultimate" */
+.ultimate-title {
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    animation: float 10s infinite ease-in-out; /* Анимация движения */
+    margin: 0; /* Убираем отступы */
+}
+
+/* Стили для текста "Вайп и Обновление" */
+.wipe-update-text {
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    animation: float 10s infinite ease-in-out; /* Анимация движения */
+    margin: 0; /* Убираем отступы */
+}
+
+/* Стили для кнопки "Начать игру" */
+.start-game-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    letter-spacing: -1px;
     color: white;
-    padding-top: 20vh;
+    background: linear-gradient(45deg, #00B7AF, #4AE682);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 10;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0), 
+                0 0 40px rgba(255, 251, 0, 0), 
+                0 0 80px rgba(0, 255, 255, 0);
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.start-game-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+                0 0 30px rgba(255, 251, 0, 0.2), 
+                0 0 60px rgba(0, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+/* Анимация для эффекта парения */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+/* ПРОКРУТКА САЙТА*/
+
+
+body::-webkit-scrollbar {
+    width: 8px; /* Ширина скролл-бара по умолчанию */
+}
+
+/* Ползунок с 3D-эффектами */
+body::-webkit-scrollbar-thumb {
+    background: #007bff; /* Цвет ползунка */
+    border-radius: 10px; /* Скругленная форма */
+    box-shadow: 
+        0 -2px 4px rgba(0, 0, 0, 0.3),   /* Тень сверху */
+        0 2px 4px rgba(0, 0, 0, 0.3),    /* Тень снизу */
+        0 1px 2px rgba(0, 0, 0, 0.1); /* Легкая светоотражающая тень */
+    animation: scrollThumb 2s infinite; /* Анимация */
+}
+
+/* Анимация ползунка */
+@keyframes scrollThumb {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Дорожка ползунка */
+body::-webkit-scrollbar-track {
+    background: #ffffff; /* Цвет дорожки */
+    border-radius: 10px; /* Скругление дорожки */
 }
 
 /* Полоска прокручивания для WebKit браузеров */
@@ -97,6 +149,7 @@ body {
     height: 8px; 
 }
 
+/* Анимация фона дорожки */
 @keyframes scrollBackground {
     0% {
         background-position: 0% 0%;
@@ -106,6 +159,7 @@ body {
     }
 }
 
+/* Дорожка с градиентом */
 ::-webkit-scrollbar-track {
     background: linear-gradient(180deg, 
         #065096, 
@@ -115,18 +169,229 @@ body {
         #A0D8FF
     );
     background-size: 300%; 
-    animation: scrollBackground 0s linear infinite; 
+    animation: scrollBackground 10s linear infinite; /* Медленная анимация */
     border-radius: 20px; 
 }
 
+/* Ползунок с градиентом */
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #00B7AF, #4AE682); 
     border-radius: 10px; 
 }
 
+/* Эффект при наведении на ползунок */
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #4AE682, #00B7AF); 
 }
+
+
+
+/* НАВБАР */
+
+/* Основные стили для навбара */
+.main-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, #0656A0, #2478e6, #0656A0);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    z-index: 1000;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: transform 1.5s ease, box-shadow 1.5s ease;
+    padding: 5px 0; /* Уменьшили отступы */
+
+
+    transform: translateY(100); /* Начальное состояние навбара */
+}
+
+
+
+.main-navbar:hover {
+    transform: translateY(-5px);
+    box-shadow: inset 0 -2px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Логотип */
+.logo-img {
+    height: auto;
+    width: 220px;
+    cursor: pointer;
+    margin-left: 2%;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Стили для ссылок в навбаре */
+.nav-item-link {
+    color: white !important;
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Изменяем фон на цвет текста */
+    display: inline-block; /* Чтобы ссылки занимали только необходимую ширину */
+    width: auto; /* Автоматическая ширина */
+}
+
+.nav-item-link:hover {
+    color: #ffffff; /* Золотистый цвет при наведении */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Эффект свечения текста */
+    transform: scale(1.1);
+}
+
+
+/* Стили для развёрнутого меню */
+.main-navbar[aria-expanded="true"] .nav-item-link {
+    background: none; /* Убираем фон */
+    padding: 8px; /* Уменьшаем отступы */
+    margin: 5px 0; /* Уменьшаем отступы между ссылками */
+    width: 100%; /* Занимают всю ширину */
+    text-align: center; /* Центрируем текст */
+    border-radius: 0; /* Убираем скругление */
+}
+
+.main-navbar[aria-expanded="true"] .nav-item-link:hover {
+    background: rgba(255, 255, 255, 0.1); /* Лёгкий фон при наведении */
+    transform: none; /* Убираем масштабирование */
+}
+
+/* Кнопка "Скачать лаунчер" */
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    letter-spacing: -1px;
+    color: white;
+    background: linear-gradient(45deg, #00B7AF, #4AE682);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 10;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0), 
+                0 0 40px rgba(255, 251, 0, 0), 
+                0 0 80px rgba(0, 255, 255, 0);
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+/* Эффект при наведении на кнопку */
+.download-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+                0 0 30px rgba(255, 251, 0, 0.2), 
+                0 0 60px rgba(0, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+/* Стили для кнопки "Скачать лаунчер" в развёрнутом меню */
+.main-navbar[aria-expanded="true"] .download-btn {
+    width: 80%; /* Уменьшаем ширину */
+    margin: 10px auto; /* Центрируем кнопку */
+    display: block;
+    text-align: center;
+    padding: 8px 16px; /* Уменьшаем отступы */
+    font-size: 18px; /* Уменьшаем размер шрифта */
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/* Стили для кнопки бургер-меню */
+.nav-toggler {
+    border: none;
+    background: transparent;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease;
+}
+
+/* Иконка бургер-меню */
+.nav-toggler .navbar-toggler-icon {
+    background-image: none;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.nav-toggler .navbar-toggler-icon::before,
+.nav-toggler .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    left: 0;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.nav-toggler .navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.nav-toggler .navbar-toggler-icon::after {
+    top: 8px;
+}
+
+/* Анимация при открытии меню */
+.nav-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.nav-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* Анимация при наведении на кнопку */
+.nav-toggler:hover .navbar-toggler-icon,
+.nav-toggler:hover .navbar-toggler-icon::before,
+.nav-toggler:hover .navbar-toggler-icon::after {
+    background-color: #4AE682;
+}
+
+/* Анимация свечения */
+.glow {
+    animation: glow 5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        filter: brightness(100%);
+    }
+    100% {
+        filter: brightness(120%);
+    }
+}
+
+
+/*МОДАЛЬНОЕ ОКНО*/
+
 
 /* Общие стили для модального окна */
 .modal-content {
@@ -138,12 +403,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%; 
-    max-width: 600px; 
-    height: auto; 
-    padding: 5%; 
-    background-image: url('/static/img/mobal.webp');
-    background-size: contain;
+    width: 100%; /* Ширина модального окна */
+    max-width: 700px; /* Максимальная ширина */
+    height: 90%; /* Высота автоматическая */
+    max-width: 450px; /* Увеличиваем максимальную ширину */
+    max-height: 550px; /* Уменьшаем максимальную высоту */
+    padding: 35px; /* Отступы внутри модального окна */
+    background-image: url('/img/mobal/mobal.webp');
+    background-size: cover; /* Фон покрывает контейнер */
     background-position: center;
     background-repeat: no-repeat;
     border: none;
@@ -152,45 +419,36 @@ body {
     animation: fadeIn 0.8s forwards;
     overflow: visible;
     background-color: rgba(0, 0, 0, 0);
+    border-radius: 20px; /* Скругление углов */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0); /* Тень */
 }
 
-/* Кнопка закрытия */
-.close {
-    position: absolute;
-    top: 2%;
-    right: 2%;
-    color: #000000;
-    font-size: 2vw;
-    font-weight: bold;
-    cursor: pointer;
-    display: none; 
-}
 
-.close:hover,
-.close:focus {
-    color: rgb(0, 247, 255);
-    text-decoration: none;
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Заголовок модального окна */
 .modal-title2 {
     text-align: center;
-    font-size: 1.5vw; 
-    margin: 0vh 0; 
+    font-size: 24px; /* Размер шрифта */
+    margin: 10px 0; /* Отступы */
     color: #ffffff;
     position: relative;
 }
 
 /* Кнопки */
 .modal-button {
-    width: 70%; 
-    max-width: 300px; 
-    height: 7vh; 
-    margin: 4vh 0; 
-    padding: 2% 5%; 
-    font-size: 1.5vw; 
+    width: 80%; /* Ширина кнопок */
+    max-width: 300px; /* Максимальная ширина */
+    height: 50px; /* Высота кнопок */
+    margin: 10px 0; /* Отступы между кнопками */
+    padding: 10px 20px; /* Отступы внутри кнопок */
+    font-size: 16px; /* Размер шрифта */
     cursor: pointer;
-    border-radius: 55px;
+    border-radius: 50px; /* Скругление углов */
     background: linear-gradient(25deg, #004fb7, #4acfe6);
     border: none;
     color: white;
@@ -199,6 +457,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 25px; /* Уменьшаем размер шрифта */
+    height: 70px; /* Уменьшаем высоту */
 }
 
 .modal-button:hover {
@@ -208,27 +468,44 @@ body {
 
 /* Иконки внутри кнопок */
 .modal-button img {
-    width: 3vw; 
-    max-width: 30px; 
-    height: auto; 
-    margin-right: 1vw; 
+    width: 45px; /* Размер иконки */
+    height: auto; /* Автоматическая высота */
+    margin-right: 10px; /* Отступ справа */
 }
 
-/* Позиционирование кнопок */
-.button11, .button22, .button33 {
-    position: relative;
-    margin-top: 1vh; 
+/* Кнопка закрытия */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    background: linear-gradient(180deg, #4AE682, #00B7AF); /* Полупрозрачный фон */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Круглая форма */
+    border: 2px solid #ffffff; /* Белая рамка */
 }
 
-/* Анимации */
-@keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
+.close:hover,
+.close:focus {
+    color: #ffffff; /* Цвет при наведении */
+    transform: rotate(90deg); /* Анимация вращения */
+    background: linear-gradient(0deg, #00B7AF, #4AE682)
 }
 
-/* Низ сайта */
+
+/* НИЗ САЙТА */
+
+/* Общие стили для футера */
 footer {
-    background-image: url('/static/img/niz.webp');
+    background-image: url('/img/niz/niz.webp');
     background-size: cover;
     background-position: center;
     border-top-left-radius: 62px;
@@ -237,336 +514,113 @@ footer {
     padding: 20px 0;
     text-align: center;
     position: relative;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 1);
+    z-index: 1;
+    overflow: hidden; /* Скрываем элементы, выходящие за пределы */
 }
 
+/* Параллакс эффект */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1); /* Затемнение фона */
+    z-index: -1; /* Помещаем за контентом */
+}
+
+/* Контейнер футера */
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    flex-wrap: wrap;
-}
-
-.logo img {
-    position: absolute;
-    top: 10px; 
-    left: -1vw; 
-    max-width: 13vw;
-    height: auto;
-}
-
-/* Левый блок: логотип и кнопки соцсетей */
-.left-section {
-    display: flex;
-    align-items: center;
     gap: 20px;
 }
 
-/* Кнопки соцсетей */
+/* Логотип */
+.logo img {
+    max-width: 180px;
+    height: auto;
+    transition: transform 0.3s ease; /* Плавный эффект при наведении */
+}
+
+.logo img:hover {
+    transform: scale(1.05); /* Увеличение логотипа при наведении */
+}
+
+/* Левый блок: кнопки соцсетей */
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .top-buttons {
     display: flex;
-    gap: 1vw;               
-    margin-left: 6vw;       
+    gap: 10px;
 }
 
 .footer-button {
-    padding: 0;
-    text-decoration: none;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    transition: all 0.3s ease;
-    width: 25px; 
-    height: 25px; 
-    border: 30px solid rgba(255, 255, 255, 0); 
-    overflow: hidden;
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .footer-button:hover {
     transform: scale(1.2);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .button1 {
-    background-image: url('/static/img/ds.png');
+    background-image: url('/img/niz/ds.webp');
 }
 
 .button2 {
-    background-image: url('/static/img/vk.png');
+    background-image: url('/img/niz/vk.webp');
 }
 
 .button3 {
-    background-image: url('/static/img/tg.png');
+    background-image: url('/img/niz/tg.webp');
 }
 
 /* Центральные кнопки */
 .center-buttons {
     display: flex;
     flex-direction: column;
-    gap: 0.5vw; 
-    align-items: center; 
+    gap: 10px;
 }
 
-.custom-start {
-    background: linear-gradient(0deg, #00B7AF, #4AE682);
-    color: white;
-    padding: 0.6vw 40px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 60px;
-    width: 19vw;
-    font-size: 1.5vw;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-}
-
-.custom-register {
-    position: relative;
-    display: inline-block;
-    width: 12vw;
-    padding: 0.3vw 0;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-size: 1vw;
-    line-height: 1.5;
-    margin-top: -0.5vw;
-    z-index: 1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-}
-
-.custom-register::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(0deg, #00B7AF, #4AE682);
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    z-index: -1;
-}
-
-/* Общие стили для кнопок */
 .gradient-button {
-    display: inline-block;   
-    padding: 10px 20px;     
-    color: white;           
-    text-align: center;     
-    text-decoration: none;   
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
     background: linear-gradient(0deg, #00B7AF, #4AE682);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
     border-radius: 60px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px;
+    cursor: pointer;
 }
 
 .gradient-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 251, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 /* Правые кнопки */
 .right-buttons {
     display: flex;
-    gap: 1vw;               
-    margin-right: -3vw;       
+    gap: 10px;
 }
 
-/* Адаптация для разных экранов */
-@media (max-width: 1200px) {
-    .logo img {
-        max-width: 15vw;
-    }
-
-    .custom-start {
-        width: 25vw;
-        font-size: 2vw;
-    }
-
-    .custom-register {
-        width: 18vw;
-        font-size: 1.5vw;
-    }
-}
-
-@media (max-width: 992px) {
-    .footer-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .left-section {
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .logo img {
-        position: static;
-        max-width: 20vw;
-    }
-
-    .top-buttons {
-        margin-left: 0;
-    }
-
-    .center-buttons {
-        order: 2;
-    }
-
-    .right-buttons {
-        order: 3;
-        justify-content: center;
-        margin-right: 0;
-    }
-
-    .custom-start {
-        width: 30vw;
-        font-size: 2.5vw;
-    }
-
-    .custom-register {
-        width: 22vw;
-        font-size: 2vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .logo img {
-        max-width: 40vw;
-    }
-
-    .custom-start {
-        width: 40vw;
-        font-size: 3vw;
-    }
-
-    .custom-register {
-        width: 30vw;
-        font-size: 2.5vw;
-    }
-
-}
-
-@media (max-width: 576px) {
-    .logo img {
-        max-width: 40vw;
-    }
-
-    .custom-start {
-        width: 50vw;
-        font-size: 4vw;
-    }
-
-    .custom-register {
-        width: 40vw;
-        font-size: 3.5vw;
-    }
-}
-
-@media (max-width: 400px) {
-    .logo img {
-        max-width: 40vw;
-    }
-
-    .custom-start {
-        width: 60vw;
-        font-size: 5vw;
-    }
-
-    .custom-register {
-        width: 50vw;
-        font-size: 4.5vw;
-    }
-}
-
-/* Мобильные устройства */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column; 
-        align-items: flex-start; 
-    }
-
-    .navbar-nav {
-        width: 100%; 
-        justify-content: center; 
-    }
-
-    .nav-link {
-        font-size: 1.2rem; 
-        margin: 5px 0; 
-    }
-
-    .overlay-content h1 {
-        font-size: 3rem; 
-    }
-
-    .overlay-content h2 {
-        font-size: 2.5rem; 
-    }
-
-    .overlay-content h3 {
-        font-size: 1.5rem; 
-    }
-
-    .magic-btn {
-        font-size: 1.2rem; 
-        padding: 0.5rem 1rem; 
-    }
-
-    .content-section {
-        padding: 20px; 
-    }
-
-    .card {
-        margin-bottom: 20px; 
-    }
-
-    .staff-card img {
-        width: 80px; 
-        height: 80px; 
-    }
-
-    .footer-container {
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .center-buttons {
-        flex-direction: column; 
-    }
-
-    .gradient-button {
-        margin: 5px 0; 
-    }
-}
-
-/* Планшеты */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .navbar {
-        padding: 10px; 
-    }
-
-    .overlay-content h1 {
-        font-size: 4rem; 
-    }
-
-    .overlay-content h2 {
-        font-size: 3rem; 
-    }
-
-    .overlay-content h3 {
-        font-size: 2rem; 
-    }
-
-    .magic-btn {
-        font-size: 1.5rem; 
-    }
-}

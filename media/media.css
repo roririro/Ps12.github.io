@@ -1,0 +1,408 @@
+/* Для экранов меньше 768px (телефоны) */
+@media (max-width: 768px) {
+    .pixelmon-title {
+        font-size: 3rem; /* Уменьшаем размер шрифта */
+    }
+
+    .ultimate-title {
+        font-size: 2.5rem; /* Уменьшаем размер шрифта */
+    }
+
+    .wipe-update-text {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+    }
+
+    .start-game-btn {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        padding: 0.5rem 1rem; /* Уменьшаем отступы */
+    }
+}
+
+/* Для экранов меньше 576px (маленькие телефоны) */
+@media (max-width: 576px) {
+    .pixelmon-title {
+        font-size: 2.5rem; /* Еще меньше размер шрифта */
+    }
+
+    .ultimate-title {
+        font-size: 2rem; /* Еще меньше размер шрифта */
+    }
+
+    .wipe-update-text {
+        font-size: 1rem; /* Еще меньше размер шрифта */
+    }
+
+    .start-game-btn {
+        font-size: 1rem; /* Еще меньше размер шрифта */
+        padding: 0.4rem 0.8rem; /* Еще меньше отступы */
+    }
+}
+
+/* Для экранов больше 1200px (большие десктопы) */
+@media (min-width: 1200px) {
+    .pixelmon-title {
+        font-size: 6rem; /* Увеличиваем размер шрифта */
+    }
+
+    .ultimate-title {
+        font-size: 5rem; /* Увеличиваем размер шрифта */
+    }
+
+    .wipe-update-text {
+        font-size: 2rem; /* Увеличиваем размер шрифта */
+    }
+
+    .start-game-btn {
+        font-size: 2rem; /* Увеличиваем размер шрифта */
+        padding: 1rem 2rem; /* Увеличиваем отступы */
+    }
+}
+
+/* ПРОКРУТКА САЙТА*/
+/* Адаптация для маленьких экранов (телефоны) */
+@media (max-width: 768px) {
+    body::-webkit-scrollbar {
+        width: 6px; /* Уменьшаем ширину для мобильных устройств */
+    }
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 8px; /* Уменьшаем скругление */
+        box-shadow: 
+            0 -1px 2px rgba(0, 0, 0, 0.3),   /* Уменьшаем тени */
+            0 1px 2px rgba(0, 0, 0, 0.3),    
+            0 1px 1px rgba(0, 0, 0, 0.1);
+        animation: none; /* Отключаем анимацию для мобильных устройств */
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Упрощаем цвет дорожки */
+        border-radius: 8px;
+    }
+}
+
+/* Адаптация для очень маленьких экранов (маленькие телефоны) */
+@media (max-width: 480px) {
+    body::-webkit-scrollbar {
+        width: 4px; /* Еще меньше ширина */
+    }
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 6px; /* Еще меньше скругление */
+        box-shadow: 
+            0 -1px 1px rgba(0, 0, 0, 0.3),   /* Минимальные тени */
+            0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #e0e0e0; /* Еще проще цвет дорожки */
+        border-radius: 6px;
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        height: 6px; /* Уменьшаем высоту для мобильных устройств */
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Упрощаем фон дорожки */
+        animation: none; /* Отключаем анимацию */
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #007bff; /* Упрощаем цвет ползунка */
+        border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #0056b3; /* Упрощаем цвет при наведении */
+    }
+}
+
+
+
+/* НАВВБАР */
+
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .main-navbar {
+        width: 90%;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .logo-img {
+        width: 180px;
+    }
+
+    .nav-item-link {
+        font-size: 18px;
+        margin-right: 8px;
+    }
+
+    .download-btn {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .main-navbar {
+        width: 95%;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .logo-img {
+        width: 150px;
+    }
+
+    .nav-item-link {
+        font-size: 16px;
+        margin-right: 5px;
+    }
+
+    .download-btn {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+
+    .nav-menu {
+        background: linear-gradient(to bottom, #0656A0, #004fb7);
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 5px 0;
+    }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 480px) {
+    .main-navbar {
+        width: 100%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .logo-img {
+        width: 120px;
+    }
+
+    .nav-item-link {
+        font-size: 14px;
+    }
+
+    .download-btn {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+
+/*МОДАЛЬНОЕ ОКНО*/
+
+
+/* Адаптация для больших экранов (1200px и выше) */
+@media (min-width: 1200px) {
+    .modal-content {
+        max-width: 600px; /* Увеличиваем максимальную ширину */
+        max-height: 700px; /* Увеличиваем максимальную высоту */
+        padding: 30px; /* Увеличиваем отступы */
+    }
+
+    .modal-title2 {
+        font-size: 28px; /* Увеличиваем размер шрифта */
+    }
+
+    .modal-button {
+        font-size: 25px; /* Увеличиваем размер шрифта */
+        height: 70px; /* Увеличиваем высоту */
+    }
+
+    .modal-button img {
+        width: 50px; /* Увеличиваем размер иконки */
+    }
+
+    .close {
+        font-size: 35px; /* Увеличиваем размер кнопки закрытия */
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Адаптация для средних экранов (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .modal-content {
+        max-width: 500px; /* Увеличиваем максимальную ширину */
+        max-height: 600px; /* Увеличиваем максимальную высоту */
+        padding: 25px; /* Увеличиваем отступы */
+    }
+
+    .modal-title2 {
+        font-size: 26px; /* Увеличиваем размер шрифта */
+    }
+
+    .modal-button {
+        font-size: 25px; /* Увеличиваем размер шрифта */
+        height: 70px; /* Увеличиваем высоту */
+    }
+
+    .modal-button img {
+        width: 50px; /* Увеличиваем размер иконки */
+    }
+
+    .close {
+        font-size: 30px; /* Увеличиваем размер кнопки закрытия */
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Адаптация для планшетов (768px - 991px) */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 400px; /* Увеличиваем максимальную ширину */
+        max-height: 500px; /* Уменьшаем максимальную высоту */
+        padding: 15px; /* Уменьшаем отступы */
+    }
+
+    .modal-title2 {
+        font-size: 20px; /* Уменьшаем размер шрифта */
+    }
+
+    .modal-button {
+        font-size: 25px; /* Уменьшаем размер шрифта */
+        height: 70px; /* Уменьшаем высоту */
+    }
+
+    .modal-button img {
+        width: 50px; /* Уменьшаем размер иконки */
+    }
+
+    .close {
+        font-size: 25px; /* Уменьшаем размер кнопки закрытия */
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Адаптация для телефонов (480px - 767px) */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%; /* Занимаем всю ширину */
+        max-height: 500px; /* Уменьшаем максимальную высоту */
+        padding: 10px; /* Минимальные отступы */
+    }
+
+    .modal-title2 {
+        font-size: 18px; /* Ещё меньше размер шрифта */
+    }
+
+    .modal-button {
+        font-size: 20px; /* Ещё меньше размер шрифта */
+        height: 60px; /* Ещё меньше высота */
+    }
+
+    .modal-button img {
+        width: 40px; /* Ещё меньше размер иконки */
+    }
+
+    .close {
+        font-size: 20px; /* Ещё меньше размер кнопки закрытия */
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Адаптация для очень маленьких экранов (до 479px) */
+@media (max-width: 479px) {
+    .modal-content {
+        padding: 5px; /* Минимальные отступы */
+        max-height: 450px; /* Ещё меньше максимальная высота */
+    }
+
+    .modal-title2 {
+        font-size: 16px; /* Ещё меньше размер шрифта */
+    }
+
+    .modal-button {
+        font-size: 15px; /* Ещё меньше размер шрифта */
+        height: 50px; /* Ещё меньше высота */
+        width: 55%; /* Ширина кнопок */
+    }
+
+    .modal-button img {
+        width: 30px; /* Ещё меньше размер иконки */
+    }
+
+    .close {
+        font-size: 18px; /* Ещё меньше размер кнопки закрытия */
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+
+
+
+/* НИЗ САЙТА */
+
+/* Адаптация для планшетов */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Вертикальное расположение блоков */
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo img {
+        max-width: 120px; /* Уменьшаем размер логотипа */
+    }
+
+    .footer-button {
+        width: 35px; /* Уменьшаем размер кнопок */
+        height: 35px;
+    }
+
+    .gradient-button {
+        font-size: 14px; /* Уменьшаем размер шрифта */
+        padding: 8px 16px;
+    }
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 480px) {
+    .logo img {
+        max-width: 100px; /* Ещё меньше размер логотипа */
+    }
+
+    .footer-button {
+        width: 30px; /* Ещё меньше размер кнопок */
+        height: 30px;
+    }
+
+    .gradient-button {
+        font-size: 12px; /* Ещё меньше размер шрифта */
+        padding: 6px 12px;
+    }
+
+    .center-buttons,
+    .right-buttons {
+        flex-direction: column; /* Вертикальное расположение кнопок */
+        gap: 8px;
+    }
+}
+
