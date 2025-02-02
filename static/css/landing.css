@@ -624,3 +624,129 @@ footer::before {
     gap: 10px;
 }
 
+
+
+
+
+/* Общие стили для карточек */
+.modern-card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 7vw; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для карточки */
+    background-color: rgba(255, 255, 255, 0); /* Полупрозрачный фон */
+    color: white;
+    margin-bottom: 20px; /* Отступ между карточками */
+    aspect-ratio: 916 / 500; /* Соотношение сторон карточки */
+}
+
+.card-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.card-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: none; /* Изображение заполняет доступное пространство с сохранением пропорций */
+    
+}
+.card-background .overlay-bg {
+    left: auto; /* Сброс позиции для правого изображения */
+    right: 0; /* Размещение справа */
+    width: 40%; /* Ширина второго изображения */
+    object-fit: contain; /* Заполнение с сохранением пропорций */
+    height: 100%; /* Задаем высоту, чтобы изображение заполнило карточку */
+}
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Текст слева */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.text-overlay {
+    text-align: left; /* Текст выровнен по левому краю */
+    max-width: 50%; /* Ограничение ширины текста */
+    padding-right: 20px; /* Отступ от правого края */
+}
+
+.text-overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.text-overlay p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+
+
+
+ /* СТИЛИ ДЛЯ РАЗДЕЛЕНИЙ */
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5vw 0; /* Адаптивный отступ */
+    position: relative;
+    font-size: var(--font-size, 4vw); /* Используем CSS-переменную для размера шрифта */
+    background: linear-gradient(to right, var(--color1, #0084ff), var(--color2, #00ff6a)); /* Градиент текста */
+    -webkit-background-clip: text; /* Обрезка фона по тексту */
+    -webkit-text-fill-color: transparent; /* Прозрачный цвет текста */
+    background-clip: text; /* Поддержка для современных браузеров */
+    color: transparent; /* Запасной вариант для браузеров, не поддерживающих background-clip */
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    height: 0.3vw; /* Адаптивная толщина линии */
+    background: linear-gradient(90deg, #0084ff, #00ff84, #00eeff); /* Градиентный фон */
+    background-size: 300% 100%; /* Увеличиваем размер фона для анимации */
+    animation: pulse 1.5s infinite, colorShift 3s infinite; /* Добавляем новую анимацию */
+    margin: 0 3vw; /* Адаптивный отступ */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(1.1);
+    }
+}
+
+@keyframes colorShift {
+    0% {
+        background-position: 0% 50%; /* Начальная позиция фона */
+    }
+    50% {
+        background-position: 100% 50%; /* Конечная позиция фона */
+    }
+    100% {
+        background-position: 0% 50%; /* Возврат к начальной позиции */
+    }
+}
+
+
+
+.separator span {
+    font-size: 2.5rem; /* Базовый размер шрифта */
+    text-transform: uppercase;
+}
+

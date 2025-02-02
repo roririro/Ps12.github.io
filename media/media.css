@@ -406,3 +406,279 @@
     }
 }
 
+
+/* КАРТОЧКА */
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+    .text-overlay h3 {
+        font-size: 1.4rem; /* Увеличиваем размер заголовка для планшетов */
+    }
+
+    .text-overlay p {
+        font-size: 1rem; /* Увеличиваем размер текста для планшетов */
+    }
+
+    .card-content {
+        padding: 15px; /* Увеличиваем отступы для планшетов */
+    }
+
+    .card-background .overlay-bg {
+        width: 50%; /* Ширина второго изображения для планшетов */
+    }
+
+    .text-overlay {
+        max-width: 65%; /* Ширина текста для планшетов */
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .text-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .text-overlay p {
+        font-size: 0.8rem;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+
+    .card-background .overlay-bg {
+        width: 40%; /* Увеличиваем ширину второго изображения на мобильных */
+    }
+
+    .text-overlay {
+        max-width: 60%; /* Увеличиваем ширину текста на мобильных */
+    }
+}
+
+/* Адаптация для экранов шириной 600px */
+@media (max-width: 600px) {
+    .text-overlay h3 {
+        font-size: 1.2rem; /* Размер заголовка для экранов 600px */
+    }
+
+    .text-overlay p {
+        font-size: 0.78rem; /* Размер текста для экранов 600px */
+    }
+
+    .card-background .overlay-bg {
+        width: 45%; /* Ширина второго изображения для экранов 600px */
+    }
+
+    .text-overlay {
+        max-width: 65%; /* Ширина текста для экранов 600px */
+    }
+}
+
+@media (max-width: 480px) {
+    .text-overlay h3 {
+        font-size: 1rem;
+    }
+
+    .text-overlay p {
+        font-size: 0.6rem;
+    }
+
+    .card-background .overlay-bg {
+        width: 40%; /* Ещё больше ширины для очень маленьких экранов */
+    }
+
+    .text-overlay {
+        max-width: 70%; /* Ещё больше ширины текста */
+    }
+}
+
+/* Адаптация для экранов шириной 320px */
+@media (max-width: 320px) {
+    .text-overlay h3 {
+        font-size: 0.9rem; /* Размер заголовка для самых маленьких экранов */
+    }
+
+    .text-overlay p {
+        font-size: 0.4rem; /* Размер текста для самых маленьких экранов */
+    }
+
+    .card-background .overlay-bg {
+        width: 35%; /* Ширина второго изображения для самых маленьких экранов */
+    }
+
+    .text-overlay {
+        max-width: 80%; /* Ширина текста для самых маленьких экранов */
+    }
+}
+
+
+/* Адаптация для экранов шириной 768px до 800px */
+@media (min-width: 768px) and (max-width: 800px) {
+    .text-overlay h3 {
+        font-size: 1.3rem; /* Размер заголовка для экранов от 768px до 800px */
+    }
+
+    .text-overlay p {
+        font-size: 0.9rem; /* Размер текста для экранов от 768px до 800px */
+    }
+
+    .card-background .overlay-bg {
+        width: 45%; /* Ширина второго изображения для экранов от 768px до 800px */
+    }
+
+    .text-overlay {
+        max-width: 65%; /* Ширина текста для экранов от 768px до 800px */
+    }
+}
+
+/* Адаптация для экранов шириной 480px до 600px */
+@media (min-width: 480px) and (max-width: 600px) {
+    .text-overlay h3 {
+        font-size: 1.1rem; /* Размер заголовка для экранов от 480px до 600px */
+    }
+
+    .text-overlay p {
+        font-size: 0.75rem; /* Размер текста для экранов от 480px до 600px */
+    }
+
+    .card-background .overlay-bg {
+        width: 42%; /* Ширина второго изображения для экранов от 480px до 600px */
+    }
+
+    .text-overlay {
+        max-width: 70%; /* Ширина текста для экранов от 480px до 600px */
+    }
+}
+
+/* Адаптация для экранов шириной 400px до 480px */
+@media (min-width: 400px) and (max-width: 480px) {
+    .text-overlay h3 {
+        font-size: 1rem; /* Размер заголовка для экранов от 400px до 480px */
+    }
+
+    .text-overlay p {
+        font-size: 0.65rem; /* Размер текста для экранов от 400px до 480px */
+    }
+
+    .card-background .overlay-bg {
+        width: 38%; /* Ширина второго изображения для экранов от 400px до 480px */
+    }
+
+    .text-overlay {
+        max-width: 75%; /* Ширина текста для экранов от 400px до 480px */
+    }
+}
+
+/* Адаптация для экранов шириной 300px до 400px */
+@media (min-width: 300px) and (max-width: 400px) {
+    .text-overlay h3 {
+        font-size: 0.95rem; /* Размер заголовка для экранов от 300px до 400px */
+    }
+
+    .text-overlay p {
+        font-size: 0.55rem; /* Размер текста для экранов от 300px до 400px */
+    }
+
+    .card-background .overlay-bg {
+        width: 36%; /* Ширина второго изображения для экранов от 300px до 400px */
+    }
+
+    .text-overlay {
+        max-width: 78%; /* Ширина текста для экранов от 300px до 400px */
+    }
+}
+
+
+ /* СТИЛИ ДЛЯ РАЗДЕЛЕНИЙ */
+
+
+/* Адаптация для планшетов */
+@media (max-width: 768px) {
+    .separator {
+        font-size: var(--font-size, 7vw); /* Увеличиваем размер шрифта */
+        margin: 4vw 0; /* Уменьшаем отступы */
+    }
+
+    .separator::before,
+    .separator::after {
+        height: 0.4vw; /* Увеличиваем толщину линии */
+        margin: 0 2.5vw; /* Уменьшаем отступы */
+    }
+
+    .separator span {
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+    .separator {
+        font-size: var(--font-size, 8vw); /* Увеличиваем размер шрифта */
+        margin: 3vw 0; /* Уменьшаем отступы */
+    }
+
+    .separator::before,
+    .separator::after {
+        height: 0.5vw; /* Увеличиваем толщину линии */
+        margin: 0 2vw; /* Уменьшаем отступы */
+    }
+
+    .separator span {
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+    }
+}
+
+
+/* Адаптация для планшетов (портретный режим) */
+@media (max-width: 1024px) {
+    .separator {
+        font-size: var(--font-size, 6vw); /* Уменьшаем размер шрифта */
+        margin: 5vw 0; /* Увеличиваем отступы */
+    }
+
+    .separator::before,
+    .separator::after {
+        height: 0.4vw; /* Увеличиваем толщину линии */
+        margin: 0 3vw; /* Увеличиваем отступы */
+    }
+
+    .separator span {
+        font-size: 1.5rem; /* Увеличиваем размер шрифта */
+    }
+}
+
+/* Адаптация для больших мобильных устройств */
+@media (max-width: 600px) {
+    .separator {
+        font-size: var(--font-size, 7vw); /* Увеличиваем размер шрифта */
+        margin: 4vw 0; /* Уменьшаем отступы */
+    }
+
+    .separator::before,
+    .separator::after {
+        height: 0.4vw; /* Увеличиваем толщину линии */
+        margin: 0 2.5vw; /* Уменьшаем отступы */
+    }
+
+    .separator span {
+        font-size: 1.2rem; /* Увеличиваем размер шрифта */
+    }
+}
+
+/* Адаптация для небольших мобильных устройств */
+@media (max-width: 320px) {
+    .separator {
+        font-size: var(--font-size, 10vw); /* Увеличиваем размер шрифта */
+        margin: 2vw 0; /* Уменьшаем отступы */
+    }
+
+    .separator::before,
+    .separator::after {
+        height: 0.6vw; /* Увеличиваем толщину линии */
+        margin: 0 1.5vw; /* Уменьшаем отступы */
+    }
+
+    .separator span {
+        font-size: 0.9rem; /* Уменьшаем размер шрифта */
+    }
+}
